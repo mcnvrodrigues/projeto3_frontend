@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Nav from './Nav';
-import './Home.css';
-
 class Home extends Component{
   render(){
     return(

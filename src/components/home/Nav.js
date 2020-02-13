@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import './Nav.css';
 //import Login from '../auth/Login';
 import { Link } from "react-router-dom";
 
