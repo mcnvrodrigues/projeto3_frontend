@@ -3,7 +3,8 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import Nav from '../home/Nav';
 import AppContext from '../../context/AppContext';
 
 class Signup extends Component {
@@ -14,10 +15,19 @@ class Signup extends Component {
       email: '',
       celular: '',
       nome: '',
+      redirect: false
       // username: '',       
       // password: '' 
     };
     this.service = new AuthService();
+  }
+
+  renderRedirect = () => {
+    
+    if (this.state.redirect) {
+      
+      return <Redirect to='/confirmation' />
+    }
   }
 
 
@@ -38,13 +48,20 @@ class Signup extends Component {
             email: "",
             celular: "",
             nome: "",
+            redirect: false
             // username: "", 
             // password: "",
         });
         // console.log(response);
         // this.context.getUser(response)
+        this.setState({
+          redirect: true
+        })
+        
     })
     .catch( error => console.log(error) )
+
+
   }
   
   handleChange = (event) => {  
@@ -55,7 +72,10 @@ class Signup extends Component {
   render(){
     return(
       <AppContext.Consumer>
-        { context => (
+        { context => (          
+          <div>
+            {this.renderRedirect()}
+            <Nav/>
           <div className="container">
             <div className="level">
 
@@ -148,8 +168,8 @@ class Signup extends Component {
                 </div>
                 
 
-                <p>Already have account? 
-                  <Link to={"/"}> Login</Link>
+                <p>Já possui cadastro?
+                  <Link to={"/Login"}> Login</Link>
               </p>
               </form>
         
@@ -158,6 +178,7 @@ class Signup extends Component {
             </div>
           
           </div>
+        </div>
         </div>
         )}
       </AppContext.Consumer>

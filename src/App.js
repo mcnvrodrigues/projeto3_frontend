@@ -1,6 +1,7 @@
 // App.js
 
 import React, { Component } from 'react';
+import Home from './components/home/Home';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ import Signup from './components/auth/Signup';
 import Navbar from './components/Navbar';
 import Login from './components/auth/Login';
 import Confirmation from './components/auth/Confirmation';
-
+import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
 
 class App extends Component {
@@ -88,8 +89,11 @@ class App extends Component {
            <div className="App">
            {/* <Navbar userInSession={this.state.loggedInUser} /> */}
              <Switch>
+               <Route exact path='/' component={Home}/>
                <Route exact path='/signup' component={Signup}/>
+               <Route exact path='/login' component={Login}/>
                <Route exact path='/auth/:confirmation' component={Confirmation}/>
+               <Route exact path='/confirmation' component={EmailPage}/>
                {/* <Route exact path="/projects" component={ProjectList}/>
                <Route exact path="/projects/:id" component={ProjectDetails} /> */}
              </Switch>

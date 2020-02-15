@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
+import Nav from '../home/Nav';
+
+import AppContext from '../../context/AppContext';
 
 class Login extends Component {
   constructor(props){
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { cpf: '', password: '' };
     this.service = new AuthService();
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
+    const cpf = this.state.cpf;
     const password = this.state.password;
-    this.service.login(username, password)
+
+    this.service.login(cpf, password)
     .then( response => {
-        this.setState({ username: "", password: "" });
-        this.props.getUser(response)
+        this.setState({ cpf: "", password: "" });
+        this.context.getUser(response)
     })
     .catch( error => console.log(error) )
   }
@@ -28,21 +32,62 @@ class Login extends Component {
     
   render(){
     return(
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={this.state.username} onChange={ e => this.handleChange(e)}/>
-          <label>Password:</label>
-          <input name="password" value={this.state.password} onChange={ e => this.handleChange(e)} />
+      <AppContext.Consumer>
+        { context => (
+          <div>
+            <Nav/>
+          <div className="container">
+            
+            <div className="level">
+
+            <div className="level-item">
+            
+              <form onSubmit={this.handleFormSubmit}>
+                {/* <label>Username:</label> */}
+
+                <div className="field">
+
+                  <label className="label">CPF</label>
+
+                    <div className="control">
+                      <input className="input" type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+                    </div>
+
+                </div>
+
+                <div className="field">
+
+                  <label className="label">Senha</label>
+
+                    <div className="control">
+                      <input className="input" type="password"  name="password" value={this.state.password} onChange={ e => this.handleChange(e)}/>
+                    </div>
+
+                </div>
+
+               
+                <div className="control">
+                  <input type='submit' className="button is-link  is-fullwidth"/>
+                </div>
+                
+
+                <p>Ainda não possui cadastro?
+                  <Link to={"/Signup"}> Cadastro</Link>
+              </p>
+              </form>
+        
+              
+
+            </div>
           
-          <input type="submit" value="Login" />
-        </form>
-        <p>Don't have account? 
-            <Link to={"/signup"}> Signup</Link>
-        </p>
-      </div>
-    )
+          </div>
+        </div>
+        </div>
+        )}
+      </AppContext.Consumer>
+    );
   }
 }
 
+Login.contextType = AppContext;
 export default Login;
