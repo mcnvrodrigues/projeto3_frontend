@@ -6,7 +6,7 @@ class Nav extends Component{
   render(){
     return(
       <React.Fragment>
-        <nav className='navbar is-fixed-top is-light'>
+        <nav className='navbar is-light'>
           <div className='brand-name container'>
             <Link to='/'><label className='has-text-success title is-1'>Commoney</label></Link>
           </div>
