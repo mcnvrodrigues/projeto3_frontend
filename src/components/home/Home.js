@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import Nav from './Nav';
 class Home extends Component{
   render(){
     return(
       <React.Fragment>
-        <Nav />
-          <img src={ 'images/imagebackground.jpeg' }></img>
+          <img src={ 'images/imagebackground.jpeg' } alt='background'></img>
         <div className='level container'>
           <div className='has-text-left column'>
             <div className='column is-two-fifths'></div>
@@ -21,7 +19,7 @@ class Home extends Component{
               em poucos minutos, tudo está resolvido.</p>
               
               <h3 className='subtitle is-3'>Segurança</h3>
-              <p>A Mutual é uma instituição autorizada e regulada pelo Banco Central do Brasil (Bacen), 
+              <p>A Commoney é uma instituição autorizada e regulada pelo Banco Central do Brasil (Bacen), 
               
               atuando como correspondente bancário.</p>
           </div>

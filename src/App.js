@@ -7,11 +7,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import AppContext from './context/AppContext';
 import Signup from './components/auth/Signup';
-import Navbar from './components/Navbar';
 import Login from './components/auth/Login';
 import Confirmation from './components/auth/Confirmation';
 import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
+import Nav from './components/home/Nav';
+import Education from './components/questions/Education';
 
 class App extends Component {
 
@@ -51,7 +52,7 @@ class App extends Component {
       getUser: this.getTheUser,
     }
 
-    // this.fetchUser();
+    this.fetchUser();
     
     // if(this.state.loggedInUser){
     // return (
@@ -87,6 +88,7 @@ class App extends Component {
     return (
       <AppContext.Provider value = {contextValues}>
            <div className="App">
+             <Nav/>
            {/* <Navbar userInSession={this.state.loggedInUser} /> */}
              <Switch>
                <Route exact path='/' component={Home}/>
@@ -94,6 +96,7 @@ class App extends Component {
                <Route exact path='/login' component={Login}/>
                <Route exact path='/auth/:confirmation' component={Confirmation}/>
                <Route exact path='/confirmation' component={EmailPage}/>
+               <Route exact path='/education' component={Education}/>
                {/* <Route exact path="/projects" component={ProjectList}/>
                <Route exact path="/projects/:id" component={ProjectDetails} /> */}
              </Switch>

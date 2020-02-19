@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import AuthService from './auth-service';
 
 import { Link, Redirect } from 'react-router-dom';
-import Nav from '../home/Nav';
 import AppContext from '../../context/AppContext';
 
 class Signup extends Component {
@@ -75,7 +74,6 @@ class Signup extends Component {
         { context => (          
           <div>
             {this.renderRedirect()}
-            <Nav/>
           <div className="container">
             <div className="level">
 
@@ -88,8 +86,12 @@ class Signup extends Component {
 
                   <label className="label">CPF</label>
 
-                    <div className="control">
+                    <div className="control has-icons-left">
                       <input className="input" type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+
+                      <span className="icon is-small is-left">
+                          <i className="fas fa-id-card"></i>
+                        </span>
                     </div>
 
                 </div>
@@ -100,7 +102,7 @@ class Signup extends Component {
 
                     <label className="label">Email</label>
 
-                      <div className="control has-icons-left has-icons-right">
+                      <div className="control has-icons-left">
                         <input className="input" type="text" placeholder="email@email.com" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
                         
                         <span className="icon is-small is-left">
@@ -121,12 +123,12 @@ class Signup extends Component {
 
                     <label className="label">Celular</label>
 
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control has-icons-left">
 
                       <input className="input" type="text" placeholder="(11) 9xxxx xxxx" name="celular" value={this.state.celular} onChange={ e => this.handleChange(e)}/>
 
                         <span className="icon is-small is-left">
-                          <i className="fas fa-envelope"></i>
+                          <i className="fas fa-mobile"></i>
                         </span>
 
                         {/* <span class="icon is-small is-right">
@@ -144,12 +146,12 @@ class Signup extends Component {
 
                     <label className="label">Nome</label>
 
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control has-icons-left">
 
                       <input className="input" type="text" placeholder="Quebrado de tal" name="nome" value={this.state.nome} onChange={ e => this.handleChange(e)}/>
 
                         <span className="icon is-small is-left">
-                          <i className="fas fa-envelope"></i>
+                          <i className="fas fa-user-alt"></i>
                         </span>
 
                         {/* <span class="icon is-small is-right">
@@ -164,7 +166,7 @@ class Signup extends Component {
 
                
                 <div className="control">
-                  <input type='submit' className="button is-link  is-fullwidth"/>
+                  <input type='submit' className="button is-link  is-fullwidth" value='Cadastrar'/>
                 </div>
                 
 
