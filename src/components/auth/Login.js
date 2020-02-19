@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
 import { Link } from 'react-router-dom';
-import Nav from '../home/Nav';
 
 import AppContext from '../../context/AppContext';
 
@@ -35,7 +34,6 @@ class Login extends Component {
       <AppContext.Consumer>
         { context => (
           <div>
-            <Nav/>
           <div className="container">
             
             <div className="level">
@@ -49,8 +47,12 @@ class Login extends Component {
 
                   <label className="label">CPF</label>
 
-                    <div className="control">
+                    <div className="control has-icons-left">
                       <input className="input" type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+
+                      <span className="icon is-small is-left">
+                          <i className="fas fa-id-card"></i>
+                        </span>
                     </div>
 
                 </div>
@@ -59,15 +61,19 @@ class Login extends Component {
 
                   <label className="label">Senha</label>
 
-                    <div className="control">
+                    <div className="control has-icons-left">
                       <input className="input" type="password"  name="password" value={this.state.password} onChange={ e => this.handleChange(e)}/>
+
+                      <span className="icon is-small is-left">
+                          <i className="fas fa-key"></i>
+                        </span>
                     </div>
 
                 </div>
 
                
                 <div className="control">
-                  <input type='submit' className="button is-link  is-fullwidth"/>
+                  <input type='submit' className="button is-link  is-fullwidth" value='Entrar'/>
                 </div>
                 
 
