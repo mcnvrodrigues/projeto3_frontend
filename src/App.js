@@ -1,26 +1,106 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// App.js
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react';
+import Home from './components/home/Home';
+import './App.css';
+import { Switch, Route } from 'react-router-dom';
+
+import AppContext from './context/AppContext';
+import Signup from './components/auth/Signup';
+import Navbar from './components/Navbar';
+import Login from './components/auth/Login';
+import Confirmation from './components/auth/Confirmation';
+import EmailPage from './components/EmailPage';
+import AuthService from './components/auth/auth-service';
+
+class App extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = { loggedInUser: null };
+    this.service = new AuthService();
+  }
+
+  fetchUser(){
+    console.log('fetchUser');
+    if( this.state.loggedInUser === null ){
+      this.service.loggedin()
+      .then(response =>{
+        this.setState({
+          loggedInUser:  response
+        }) 
+      })
+      .catch( err =>{
+        this.setState({
+          loggedInUser:  false
+        }) 
+      })
+    }
+  }
+
+  getTheUser= (userObj) => {
+    this.setState({
+      loggedInUser: userObj
+    })
+  } 
+
+  render() {
+
+    const contextValues = {
+      state: this.state,
+      getUser: this.getTheUser,
+    }
+
+    // this.fetchUser();
+    
+    // if(this.state.loggedInUser){
+    // return (
+    //   <AppContext.Provider value = {contextValues}>
+    //   <div className="App">
+    //   {/* <Navbar userInSession={this.state.loggedInUser} /> */}
+    //     <Switch>
+    //       <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
+    //       <Route exact path='/' render={() => <Login getUser={this.getTheUser}/>}/>
+    //       <Route exact path='/auth/:confirmation' component={Confirmation}/>
+    //       {/* <Route exact path="/projects" component={ProjectList}/>
+    //       <Route exact path="/projects/:id" component={ProjectDetails} /> */}
+    //     </Switch>
+    //   </div>
+    //   </AppContext.Provider>
+    // );
+    // } else{
+    //   return(
+    //     <AppContext.Provider value = {contextValues}>
+    //       <div className="App">
+    //       {/* <Navbar userInSession={this.state.loggedInUser} /> */}
+    //         <Switch>
+    //           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser}/>}/>
+    //           <Route exact path='/auth/:confirmation' component={Confirmation}/>
+    //           {/* <Route exact path="/projects" component={ProjectList}/>
+    //           <Route exact path="/projects/:id" component={ProjectDetails} /> */}
+    //         </Switch>
+    //       </div>
+    //     </AppContext.Provider>
+    //   )
+    // }
+
+    return (
+      <AppContext.Provider value = {contextValues}>
+           <div className="App">
+           {/* <Navbar userInSession={this.state.loggedInUser} /> */}
+             <Switch>
+               <Route exact path='/' component={Home}/>
+               <Route exact path='/signup' component={Signup}/>
+               <Route exact path='/login' component={Login}/>
+               <Route exact path='/auth/:confirmation' component={Confirmation}/>
+               <Route exact path='/confirmation' component={EmailPage}/>
+               {/* <Route exact path="/projects" component={ProjectList}/>
+               <Route exact path="/projects/:id" component={ProjectDetails} /> */}
+             </Switch>
+           </div>
+      </AppContext.Provider>
+    )
+  }
 }
 
 export default App;
