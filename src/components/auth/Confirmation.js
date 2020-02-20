@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
+import { Link, Redirect } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
 
 class Confirmation extends Component{
@@ -9,9 +10,19 @@ class Confirmation extends Component{
     this.state = { 
       email: '',
       psswd: '',
-      confpsswd: ''
+      confpsswd: '',
+      statusSenha: 0,
+      redirect: false
     };
     this.service = new AuthService();
+  }
+
+  renderRedirect = () => {
+    
+    if (this.state.redirect) {
+      
+      return <Redirect to='/education' />
+    }
   }
 
   componentDidMount(){
@@ -38,28 +49,61 @@ class Confirmation extends Component{
     const psswd = this.state.psswd;
     const confpsswd = this.state.confpsswd;
 
-    this.service.createpsw(email, psswd, confpsswd)
-    .then( response => {
-        this.setState({
-            email: "",
-            psswd: "",
-            confpsswd: ""
-        });
-        console.log(response);
-        
-    })
-    .catch( error => console.log(error) )
+    if(psswd === "" || confpsswd === ""){
+      this.setState({
+        statusSenha: 1,
+      });
+    }else if (psswd !== confpsswd){
+      this.setState({
+        statusSenha: 3,
+      });
+    }else{
+      this.service.createpsw(email, psswd, confpsswd)
+      .then( response => {
+          this.setState({
+              email: "",
+              psswd: "",
+              confpsswd: ""
+          });
+  
+          this.setState({
+            redirect: true
+          })
+          console.log(response);
+          
+      })
+      .catch( error => {
+        console.log(error);
+
+        if(this.state.psswd === "" || this.state.confpsswd === "") //caso as senhas estejam nulas
+        {
+          this.setState({
+            statusSenha: 1,
+          });
+  
+        }else{ // fluxo normal do error
+          this.setState({
+            statusSenha: 2,
+          });
+        }
+      
+      })
+    }
+    
   }
   
   handleChange = (event) => {  
     const {name, value} = event.target;
     this.setState({[name]: value});
+    this.setState({statusSenha:0});
   }
 
     render(){
         return(
             <AppContext.Consumer>
               { context => (
+                <div>
+                  {this.renderRedirect()}
                 <div className="container">
                   <div className="level">
       
@@ -87,16 +131,19 @@ class Confirmation extends Component{
                           </div>
       
                       </div> 
-      
+                        
                       <div className="control">
                         <input type='submit' className="button is-link  is-fullwidth"/>
                       </div>
 
+                      {(this.state.statusSenha === 1?<p className="help is-danger">Crie uma senha!</p>:<div></div>)}
+                      {(this.state.statusSenha === 3?<p className="help is-danger">As senhas não são idênticas!</p>:<div></div>)}
                     </form>                   
       
                   </div>
                 
                 </div>
+              </div>
               </div>
               )}
             </AppContext.Consumer>
