@@ -93,10 +93,10 @@ class App extends Component {
              <Switch>
                <Route exact path='/' component={Home}/>
                <Route exact path='/signup' component={Signup}/>
-               <Route exact path='/login' component={Login}/>
-               <Route exact path='/auth/:confirmation' component={Confirmation}/>
+               <Route exact path='/login' component={Login}/>               
                <Route exact path='/confirmation' component={EmailPage}/>
                <Route exact path='/education' component={Education}/>
+               <Route exact path='/:confirmation' component={Confirmation}/>
                {/* <Route exact path="/projects" component={ProjectList}/>
                <Route exact path="/projects/:id" component={ProjectDetails} /> */}
              </Switch>

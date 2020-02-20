@@ -18,6 +18,14 @@ class Nav extends Component{
   componentDidUpdate() {
     console.log('usuario logado >> ', this.context.state.loggedInUser);
   }
+
+  logoutUser = () =>{
+    this.service.logout()
+    .then(() => {
+      this.setState({ loggedInUser: null });
+      this.context.getUser(null);  
+    })
+  }
   render(){
     
     return(
@@ -33,7 +41,11 @@ class Nav extends Component{
             <figure className="image is-48x48 dropdown">
               <img className="is-rounded dropbtn" src="images/user.png" alt='user-logo'/> 
               <div className = "dropdown-content">
-            <span>{this.context.state.loggedInUser.nome}</span>
+
+                  <div className='button-login navbar-end navbar-item'>
+                    <Link to='/'><button className="button is-danger" type='button' onClick={() => this.logoutUser()}>Sair</button></Link>
+                  </div>
+
               </div>             
             </figure>
             </div>
