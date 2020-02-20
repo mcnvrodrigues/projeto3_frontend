@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import AuthService from './auth-service';
 
 import { Link, Redirect } from 'react-router-dom';
-import Nav from '../home/Nav';
 import AppContext from '../../context/AppContext';
 
 class Signup extends Component {
@@ -15,6 +14,7 @@ class Signup extends Component {
       email: '',
       celular: '',
       nome: '',
+      cpfUtilizado: 0,
       redirect: false
       // username: '',       
       // password: '' 
@@ -40,8 +40,13 @@ class Signup extends Component {
     const nome = this.state.nome;
     // const username = this.state.username;
     // const password = this.state.password;
-  
-    this.service.signup(cpf, email, celular, nome)
+
+    if(cpf === "" || email === "" || celular === "" || nome === ""){
+      this.setState({
+        cpfUtilizado: 1,
+      });
+    }else{
+      this.service.signup(cpf, email, celular, nome)
     .then( response => {
         this.setState({
             cpf: "",
@@ -59,14 +64,31 @@ class Signup extends Component {
         })
         
     })
-    .catch( error => console.log(error) )
+    .catch( error => {
+      console.log(error);
 
+      if(this.state.cpf === "") //caso o cpf esteja nulo
+      {
+        this.setState({
+          cpfUtilizado: 1,
+        });
 
+      }else{ // fluxo normal do error
+        this.setState({
+          cpfUtilizado: 2,
+        });
+      }
+      
+    })
+
+    }
+    
   }
   
   handleChange = (event) => {  
     const {name, value} = event.target;
     this.setState({[name]: value});
+    this.setState({cpfUtilizado:0});
   }
 
   render(){
@@ -75,7 +97,6 @@ class Signup extends Component {
         { context => (          
           <div>
             {this.renderRedirect()}
-            <Nav/>
           <div className="container">
             <div className="level">
 
@@ -88,8 +109,18 @@ class Signup extends Component {
 
                   <label className="label">CPF</label>
 
-                    <div className="control">
-                      <input className="input" type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+                    <div className="control has-icons-left has-icons-right">
+                      <input className={(this.state.cpfUtilizado === 2 ?"input is-danger": "input")} type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+
+                        <span className="icon is-small is-left">
+                          <i className="fas fa-id-card"></i>
+                        </span>
+                        {(this.state.cpfUtilizado === 2 ?
+                        <span className="icon is-small is-right">
+                          <i className="fas fa-exclamation-triangle"></i>
+                        </span>:
+                        <div></div>)}
+                        {(this.state.cpfUtilizado === 2?<p className="help is-danger">CPF já cadastrado!</p>:<div></div>)}
                     </div>
 
                 </div>
@@ -100,7 +131,7 @@ class Signup extends Component {
 
                     <label className="label">Email</label>
 
-                      <div className="control has-icons-left has-icons-right">
+                      <div className="control has-icons-left">
                         <input className="input" type="text" placeholder="email@email.com" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
                         
                         <span className="icon is-small is-left">
@@ -121,12 +152,12 @@ class Signup extends Component {
 
                     <label className="label">Celular</label>
 
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control has-icons-left">
 
                       <input className="input" type="text" placeholder="(11) 9xxxx xxxx" name="celular" value={this.state.celular} onChange={ e => this.handleChange(e)}/>
 
                         <span className="icon is-small is-left">
-                          <i className="fas fa-envelope"></i>
+                          <i className="fas fa-mobile"></i>
                         </span>
 
                         {/* <span class="icon is-small is-right">
@@ -144,12 +175,12 @@ class Signup extends Component {
 
                     <label className="label">Nome</label>
 
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control has-icons-left">
 
                       <input className="input" type="text" placeholder="Quebrado de tal" name="nome" value={this.state.nome} onChange={ e => this.handleChange(e)}/>
 
                         <span className="icon is-small is-left">
-                          <i className="fas fa-envelope"></i>
+                          <i className="fas fa-user-alt"></i>
                         </span>
 
                         {/* <span class="icon is-small is-right">
@@ -164,9 +195,10 @@ class Signup extends Component {
 
                
                 <div className="control">
-                  <input type='submit' className="button is-link  is-fullwidth"/>
+                  <input type='submit' className="button is-link  is-fullwidth" value='Cadastrar'/>
                 </div>
                 
+                {(this.state.cpfUtilizado === 1?<p className="help is-danger">Preencha todos os campos!</p>:<div></div>)}
 
                 <p>Já possui cadastro?
                   <Link to={"/Login"}> Login</Link>
