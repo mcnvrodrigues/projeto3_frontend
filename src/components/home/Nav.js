@@ -43,7 +43,7 @@ class Nav extends Component{
               <div className = "dropdown-content">
 
                   <div className='button-login navbar-end navbar-item'>
-                    <Link to='/'><button className="button is-danger" type='button' onClick={() => this.logoutUser()}>Sair</button></Link>
+                    <Link to='/'><button className="button is-warning" type='button' onClick={() => this.logoutUser()}>Sair</button></Link>
                   </div>
 
               </div>             

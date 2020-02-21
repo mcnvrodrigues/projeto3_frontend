@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 
 
-import Service from '../service';
+import AuthService from '../auth/auth-service';
 
 import { Redirect } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
 
-class Education extends Component {
+class Dependents extends Component {
     constructor(props){
         super(props);
         this.state = { 
-          selectedOption: '',
+         
           redirect: false
           // username: '',       
           // password: '' 
         };
-        this.service = new Service();
+        this.service = new AuthService();
       }
 
     renderRedirect = () => {
     
         if (this.state.redirect) {
           
-          return <Redirect to='/dependents' />
+          return <Redirect to='/confirmation' />
         }
       }
     
@@ -32,23 +32,31 @@ class Education extends Component {
         event.preventDefault();
         
       
-        this.service.education(this.state.selectedOption)
-        .then( response => {
-                      
-            this.setState({
-              redirect: true
-            })
+        // this.service.signup(cpf, email, celular, nome)
+        // .then( response => {
+        //     this.setState({
+                
+        //         redirect: false
+                
+        //     });
             
+        //     this.setState({
+        //       redirect: true
+        //     })
+            
+        // })
+        // .catch( error => console.log(error) )
+
+        this.setState({
+          redirect: true
         })
-        .catch( error => console.log(error) )    
- 
+    
+    
       }
       
-      handleChange = (event) => { 
-        this.setState({
-          selectedOption: event.target.value,
-        });
-        
+      handleChange = (event) => {  
+        const {name, value} = event.target;
+        this.setState({[name]: value});
       }
       render(){
         return(
@@ -66,11 +74,8 @@ class Education extends Component {
                   <form onSubmit={this.handleFormSubmit}>
 
                   <h1 className="title">
-                      <p>Qual o seu grau de</p>
-                      <p>escolaridade?</p>
+                      <p>Você tem dependentes?</p>
                   </h1>
-
-            <span className="tag is-danger">{this.state.selectedOption}</span>
 
                 <hr></hr>
                    
@@ -81,7 +86,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt1" checked={this.state.selectedOption === 'opt1'} onChange={ e => this.handleChange(e)}/> Sem instrução
+                                        <input type="radio" name="answer"/> Não tenho dependentes
                                     </label>
                                 </div>
                             </div>
@@ -91,7 +96,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt2"  checked={this.state.selectedOption === 'opt2'} onChange={ e => this.handleChange(e)}/> Ensino Fundamental 1 (antigo primário)
+                                        <input type="radio" name="answer"/> 1 dependente
                                     </label>
                                 </div>
                             </div>
@@ -101,7 +106,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt3" checked={this.state.selectedOption === 'opt3'} onChange={ e => this.handleChange(e)}/> Ensino Fundamental 2 (antigo ginásio)
+                                        <input type="radio" name="answer"/> 2 dependentes
                                     </label>
                                 </div>
                             </div>
@@ -111,7 +116,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt4" checked={this.state.selectedOption === 'opt4'} onChange={ e => this.handleChange(e)}/> Ensino Médio (antigo 2 grau)
+                                        <input type="radio" name="answer"/> 3 dependentes
                                     </label>
                                 </div>
                             </div>
@@ -121,17 +126,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt5" checked={this.state.selectedOption === 'opt5'} onChange={ e => this.handleChange(e)}/> Ensino Superior
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="box"> 
-                            <div className="media-content">
-                                <div className="content">
-                                    <label className="radio">
-                                        <input type="radio" value="opt6" checked={this.state.selectedOption === 'opt6'} onChange={ e => this.handleChange(e)}/> Pós Graduação
+                                        <input type="radio" name="answer"/> 4 ou mais dependentes
                                     </label>
                                 </div>
                             </div>
@@ -165,4 +160,4 @@ class Education extends Component {
       }
 }
 
-export default Education;
+export default Dependents;

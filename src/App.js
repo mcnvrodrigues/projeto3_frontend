@@ -13,6 +13,7 @@ import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
 import Nav from './components/home/Nav';
 import Education from './components/questions/Education';
+import Dependents from './components/questions/Dependents';
 
 class App extends Component {
 
@@ -96,7 +97,11 @@ class App extends Component {
                <Route exact path='/login' component={Login}/>               
                <Route exact path='/confirmation' component={EmailPage}/>
                <Route exact path='/education' component={Education}/>
+               <Route exact path='/dependents' component={Dependents}/>
+              
+               {/* colocar esse rota sempre por ultimo */}
                <Route exact path='/:confirmation' component={Confirmation}/>
+               
                {/* <Route exact path="/projects" component={ProjectList}/>
                <Route exact path="/projects/:id" component={ProjectDetails} /> */}
              </Switch>
