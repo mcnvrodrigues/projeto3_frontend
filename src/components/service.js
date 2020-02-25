@@ -14,8 +14,13 @@ class Service {
     this.service = service;
   }
 
-  education = (degree) => {
-    return this.service.post('/education', {degree})
+  education = (confirmationCode, degree) => {
+    return this.service.post('/education', {confirmationCode, degree})
+    .then(response => response.data);
+  }
+
+  dependents = (confirmationCode, dependents) => {
+    return this.service.post('/dependents', {confirmationCode, dependents})
     .then(response => response.data);
   }
 

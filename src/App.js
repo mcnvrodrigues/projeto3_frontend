@@ -14,12 +14,17 @@ import AuthService from './components/auth/auth-service';
 import Nav from './components/home/Nav';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
+// import AvailableLoan from './components/AvailableLoan';
+import Loans from  './components/Loans';
 
 class App extends Component {
 
   constructor(props){
     super(props)
-    this.state = { loggedInUser: null };
+    this.state = { 
+      loggedInUser: null, 
+      confirmationCode: ''
+    };
     this.service = new AuthService();
   }
 
@@ -46,11 +51,18 @@ class App extends Component {
     })
   } 
 
+  getConfirmationCode = (code) => {
+    this.setState({
+      confirmationCode: code
+    })
+  }
+
   render() {
 
     const contextValues = {
       state: this.state,
       getUser: this.getTheUser,
+      getConfirmationCode: this.getConfirmationCode
     }
 
     this.fetchUser();
@@ -98,6 +110,8 @@ class App extends Component {
                <Route exact path='/confirmation' component={EmailPage}/>
                <Route exact path='/education' component={Education}/>
                <Route exact path='/dependents' component={Dependents}/>
+               {/* <Route exact path='/loan' component={AvailableLoan}/> */}
+               <Route exact path='/loans' component={Loans}/>
               
                {/* colocar esse rota sempre por ultimo */}
                <Route exact path='/:confirmation' component={Confirmation}/>

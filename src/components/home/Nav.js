@@ -38,8 +38,30 @@ class Nav extends Component{
             </div>
             {(this.context.state.loggedInUser ?
             <div>
-            <figure className="image is-48x48 dropdown">
-              <img className="is-rounded dropbtn" src="images/user.png" alt='user-logo'/> 
+
+            {/*  ------------------------------------------------------------ */}
+            {/* <figure className="image is-48x48 dropdown">
+                
+                <span className="icon is-large">
+                    <i className="fas fa-user-plus"></i>
+                </span> */}
+              {/* <img className="is-rounded dropbtn" src="images/user.png" alt='user-logo'/>  */}
+              {/* <div className = "dropdown-content">
+
+                  <div className='button-login navbar-end navbar-item'>
+                    <Link to='/'><button className="button is-warning" type='button' onClick={() => this.logoutUser()}>Sair</button></Link>
+                  </div>
+
+              </div>             
+            </figure> */}
+
+            {/* ------------------------------------------------------------ */}
+
+            {/* <div className="control has-icons-right dropdown">
+              <div className='esp-right'>Olá, Marciano</div>
+                <span className="icon is-large is-right">
+                    <i className="fas fa-user-plus"></i>
+                </span>              
               <div className = "dropdown-content">
 
                   <div className='button-login navbar-end navbar-item'>
@@ -47,11 +69,59 @@ class Nav extends Component{
                   </div>
 
               </div>             
-            </figure>
+            </div> */}
+
+            {/* ------------------------- DROPDOWN MENU ------------------------- */}
+            <div class="dropdown is-active">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Olá, Marciano</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item">
+                    Meus Dados
+                  </a>
+                  <a class="dropdown-item">
+                    Perfil de Investidor
+                  </a>
+                  <a href="#" class="dropdown-item is-active">
+                    Adesão de contratos
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    Transferência de custódia
+                  </a>
+                  <hr class="dropdown-divider"/>
+                  <a href="#" class="dropdown-item">
+                    Senha
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    Assinatura Eletrônica
+                  </a>
+                  {/* <a class="dropdown-item" onClick={() => this.logoutUser()}> */}
+                  <Link to='/' class="dropdown-item" onClick={() => this.logoutUser()}>
+                    <span class="icon is-small">
+                      <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    </span>
+                    <span> Sair</span>
+
+                  </Link>
+                    
+                  {/* </a> */}
+                </div>
+              </div>
+            </div>
+
+            {/* ------------------------- DROPDOWN MENU ------------------------- */}
+
             </div>
             :            
             <div className='button-login navbar-end navbar-item'>
-              <Link to='/Login'><button className="button is-danger" type='button'>Login</button></Link>
+              <Link to='/login'><button className="button is-danger" type='button'>Entrar</button></Link>
             </div>
             
             )}

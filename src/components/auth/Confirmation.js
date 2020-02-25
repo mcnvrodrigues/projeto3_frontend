@@ -21,7 +21,7 @@ class Confirmation extends Component{
     
     if (this.state.redirect) {
       
-      return <Redirect to='/education' />
+      return <Redirect to='/education'/>
     }
   }
 
@@ -38,7 +38,9 @@ class Confirmation extends Component{
       console.log('confirmation ++++', response);
       this.setState({
         email: response.user.email
-      })
+      });
+
+      this.context.getConfirmationCode(confirmation);
     })
     .catch( error => {
       // console.log(error);

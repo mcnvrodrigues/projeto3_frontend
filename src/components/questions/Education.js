@@ -12,8 +12,6 @@ class Education extends Component {
         this.state = { 
           selectedOption: '',
           redirect: false
-          // username: '',       
-          // password: '' 
         };
         this.service = new Service();
       }
@@ -25,19 +23,39 @@ class Education extends Component {
           return <Redirect to='/dependents' />
         }
       }
-    
-    
-    
+
+      chosenDegree = (opt) => {
+        switch(opt){
+          case 'opt1':
+            return 'Sem instrução';
+          case 'opt2':
+            return 'Ensino Fundamental 1';
+          case 'opt3':
+            return 'Ensino Fundamental 2';
+          case 'opt4':
+            return 'Ensino Médio';
+
+          case 'opt5':
+            return 'Ensino Superior';
+          case 'opt6':
+            return 'Pós Graduação';
+          default:
+            return '';
+        }
+      }
+  
       handleFormSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
         
-      
-        this.service.education(this.state.selectedOption)
+        let degree = this.chosenDegree(this.state.selectedOption);
+
+        this.service.education(this.context.state.confirmationCode, degree)
         .then( response => {
                       
             this.setState({
               redirect: true
-            })
+            });
+            console.log(response);
             
         })
         .catch( error => console.log(error) )    
@@ -165,4 +183,5 @@ class Education extends Component {
       }
 }
 
+Education.contextType = AppContext;
 export default Education;

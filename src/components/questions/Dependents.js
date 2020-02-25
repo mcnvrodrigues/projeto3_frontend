@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-import AuthService from '../auth/auth-service';
+import Service from '../service';
 
 import { Redirect } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
@@ -10,53 +10,60 @@ class Dependents extends Component {
     constructor(props){
         super(props);
         this.state = { 
-         
+          selectedOption: '',
           redirect: false
-          // username: '',       
-          // password: '' 
         };
-        this.service = new AuthService();
+        this.service = new Service();
       }
 
     renderRedirect = () => {
     
         if (this.state.redirect) {
           
-          return <Redirect to='/confirmation' />
+          return <Redirect to='/' />
         }
       }
-    
-    
-    
-      handleFormSubmit = (event) => {
-        event.preventDefault();
-        
-      
-        // this.service.signup(cpf, email, celular, nome)
-        // .then( response => {
-        //     this.setState({
-                
-        //         redirect: false
-                
-        //     });
-            
-        //     this.setState({
-        //       redirect: true
-        //     })
-            
-        // })
-        // .catch( error => console.log(error) )
 
-        this.setState({
-          redirect: true
+      dependents = (opt) => {
+        switch(opt){
+          case 'opt1':
+            return 0;
+          case 'opt2':
+            return 1;
+          case 'opt3':
+            return 2;
+          case 'opt4':
+            return 3;
+          case 'opt5':
+            return 4;          
+          default:
+            return '';
+        }
+      }
+  
+      handleFormSubmit = (event) => {
+        event.preventDefault(); 
+        
+        let dep = this.dependents(this.state.selectedOption);
+
+        this.service.dependents(this.context.state.confirmationCode, dep)
+        .then( response => {
+                      
+            this.setState({
+              redirect: true
+            });
+            console.log(response);
+            
         })
-    
-    
+        .catch( error => console.log(error) )    
+ 
       }
       
-      handleChange = (event) => {  
-        const {name, value} = event.target;
-        this.setState({[name]: value});
+      handleChange = (event) => { 
+        this.setState({
+          selectedOption: event.target.value,
+        });
+        
       }
       render(){
         return(
@@ -75,7 +82,10 @@ class Dependents extends Component {
 
                   <h1 className="title">
                       <p>Você tem dependentes?</p>
+                      
                   </h1>
+
+            
 
                 <hr></hr>
                    
@@ -86,7 +96,7 @@ class Dependents extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" name="answer"/> Não tenho dependentes
+                                        <input type="radio" value="opt1" checked={this.state.selectedOption === 'opt1'} onChange={ e => this.handleChange(e)}/> Não tenho dependentes
                                     </label>
                                 </div>
                             </div>
@@ -96,7 +106,7 @@ class Dependents extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" name="answer"/> 1 dependente
+                                        <input type="radio" value="opt2"  checked={this.state.selectedOption === 'opt2'} onChange={ e => this.handleChange(e)}/> 1 dependente
                                     </label>
                                 </div>
                             </div>
@@ -106,7 +116,7 @@ class Dependents extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" name="answer"/> 2 dependentes
+                                        <input type="radio" value="opt3" checked={this.state.selectedOption === 'opt3'} onChange={ e => this.handleChange(e)}/> 2 dependentes
                                     </label>
                                 </div>
                             </div>
@@ -116,7 +126,7 @@ class Dependents extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" name="answer"/> 3 dependentes
+                                        <input type="radio" value="opt4" checked={this.state.selectedOption === 'opt4'} onChange={ e => this.handleChange(e)}/> 3 dependentes
                                     </label>
                                 </div>
                             </div>
@@ -126,11 +136,11 @@ class Dependents extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" name="answer"/> 4 ou mais dependentes
+                                        <input type="radio" value="opt5" checked={this.state.selectedOption === 'opt5'} onChange={ e => this.handleChange(e)}/> 4 ou mais dependentes
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div>                       
 
                         <div>
 
@@ -160,4 +170,5 @@ class Dependents extends Component {
       }
 }
 
+Dependents.contextType = AppContext;
 export default Dependents;

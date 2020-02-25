@@ -105,7 +105,7 @@ class Login extends Component {
 
                   <label className="label">Senha</label>
 
-                    <div className="control has-icons-left">
+                    <div className="control has-icons-left esp-bottom">
                       <input className="input" type="password"  name="password" value={this.state.password} onChange={ e => this.handleChange(e)}/>
 
                       <span className="icon is-small is-left">
@@ -115,6 +115,9 @@ class Login extends Component {
 
                 </div>
 
+                
+
+
                
                 <div className="control">
                   <input type='submit' className="button is-link  is-fullwidth" value='Entrar'/>
@@ -122,7 +125,7 @@ class Login extends Component {
                 {(this.state.dadosInvalidos === 1?<p className="help is-danger">Digite o CPF e senha!</p>:<div></div>)}
                 {(this.state.dadosInvalidos === 2?<p className="help is-danger">CPF ou senha inválidos!</p>:<div></div>)}
                 <p>Ainda não possui cadastro?
-                  <Link to={"/Signup"}> Cadastro</Link>
+                  <Link to={"/signup"}> Cadastro</Link>
               </p>
               </form>
         

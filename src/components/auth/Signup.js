@@ -175,7 +175,7 @@ class Signup extends Component {
 
                     <label className="label">Nome</label>
 
-                    <div className="control has-icons-left">
+                    <div className="control has-icons-left esp-bottom">
 
                       <input className="input" type="text" placeholder="Quebrado de tal" name="nome" value={this.state.nome} onChange={ e => this.handleChange(e)}/>
 
@@ -201,7 +201,7 @@ class Signup extends Component {
                 {(this.state.cpfUtilizado === 1?<p className="help is-danger">Preencha todos os campos!</p>:<div></div>)}
 
                 <p>Já possui cadastro?
-                  <Link to={"/Login"}> Login</Link>
+                  <Link to={"/login"}> Login</Link>
               </p>
               </form>
         
