@@ -15,7 +15,8 @@ import Nav from './components/home/Nav';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
 // import AvailableLoan from './components/AvailableLoan';
-import Loans from  './components/Loans';
+
+import Dashboard from './components/Dashboard'
 
 class App extends Component {
 
@@ -111,7 +112,8 @@ class App extends Component {
                <Route exact path='/education' component={Education}/>
                <Route exact path='/dependents' component={Dependents}/>
                {/* <Route exact path='/loan' component={AvailableLoan}/> */}
-               <Route exact path='/loans' component={Loans}/>
+               
+               <Route exact path='/dashboard' component={Dashboard}/>
               
                {/* colocar esse rota sempre por ultimo */}
                <Route exact path='/:confirmation' component={Confirmation}/>

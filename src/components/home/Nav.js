@@ -34,7 +34,7 @@ class Nav extends Component{
         <React.Fragment>
           <nav className='navbar is-white'>
             <div className='brand-name container'>
-              <Link to='/'><img src='images/logo.png' alt='logo'></img></Link>
+              <Link to='/'><img src='images/logo.png' alt='logo' className='logo'></img></Link>
             </div>
             {(this.context.state.loggedInUser ?
             <div>
@@ -72,40 +72,40 @@ class Nav extends Component{
             </div> */}
 
             {/* ------------------------- DROPDOWN MENU ------------------------- */}
-            <div class="dropdown is-active">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Olá, Marciano</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+            <div className="dropdown is-active drop-space">
+              <div className="dropdown-trigger">
+                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Olá, Tangamandapiano</span>
+                  <span className="icon is-small">
+                    <i className="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
                 </button>
               </div>
-              <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">
+              <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                <div className="dropdown-content">
+                  <a href="#" className="dropdown-item">
                     Meus Dados
                   </a>
-                  <a class="dropdown-item">
-                    Perfil de Investidor
-                  </a>
-                  <a href="#" class="dropdown-item is-active">
+                  <Link to='/dashboard' className="dropdown-item">
+                    Área Exclusiva
+                  </Link>
+                  <a href="#" className="dropdown-item is-active">
                     Adesão de contratos
                   </a>
-                  <a href="#" class="dropdown-item">
+                  <a href="#" className="dropdown-item">
                     Transferência de custódia
                   </a>
-                  <hr class="dropdown-divider"/>
-                  <a href="#" class="dropdown-item">
+                  <hr className="dropdown-divider"/>
+                  <a href="#" className="dropdown-item">
                     Senha
                   </a>
-                  <a href="#" class="dropdown-item">
+                  <a href="#" className="dropdown-item">
                     Assinatura Eletrônica
                   </a>
-                  {/* <a class="dropdown-item" onClick={() => this.logoutUser()}> */}
-                  <Link to='/' class="dropdown-item" onClick={() => this.logoutUser()}>
-                    <span class="icon is-small">
-                      <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                  {/* <a className="dropdown-item" onClick={() => this.logoutUser()}> */}
+                  <Link to='/' className="dropdown-item" onClick={() => this.logoutUser()}>
+                    <span className="icon is-small">
+                      <i className="fas fa-sign-out-alt" aria-hidden="true"></i>
                     </span>
                     <span> Sair</span>
 

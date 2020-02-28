@@ -5,6 +5,7 @@ import AuthService from './auth-service';
 
 import { Link, Redirect } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
+import InputMask from 'react-input-mask';
 
 class Signup extends Component {
   constructor(props){
@@ -34,7 +35,7 @@ class Signup extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const cpf = this.state.cpf;
+    const cpf = this.state.cpf.replace(/[^\d]+/g,'');
     const email = this.state.email;
     const celular = this.state.celular;
     const nome = this.state.nome;
@@ -110,7 +111,7 @@ class Signup extends Component {
                   <label className="label">CPF</label>
 
                     <div className="control has-icons-left has-icons-right">
-                      <input className={(this.state.cpfUtilizado === 2 ?"input is-danger": "input")} type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+                      <InputMask mask="999.999.999-99" className={(this.state.cpfUtilizado === 2 ?"input is-danger": "input")} type="text"  name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
 
                         <span className="icon is-small is-left">
                           <i className="fas fa-id-card"></i>
@@ -132,7 +133,7 @@ class Signup extends Component {
                     <label className="label">Email</label>
 
                       <div className="control has-icons-left">
-                        <input className="input" type="text" placeholder="email@email.com" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
+                        <input className="input" type="email" placeholder="email@email.com" name="email" value={this.state.email} onChange={ e => this.handleChange(e)}/>
                         
                         <span className="icon is-small is-left">
                           <i className="fas fa-envelope"></i>
@@ -154,7 +155,7 @@ class Signup extends Component {
 
                     <div className="control has-icons-left">
 
-                      <input className="input" type="text" placeholder="(11) 9xxxx xxxx" name="celular" value={this.state.celular} onChange={ e => this.handleChange(e)}/>
+                      <InputMask mask="(099) \99999-9999" className="input" type="phone"  name="celular" value={this.state.celular} onChange={ e => this.handleChange(e)}/>
 
                         <span className="icon is-small is-left">
                           <i className="fas fa-mobile"></i>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
 
 class Confirmation extends Component{

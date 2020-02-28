@@ -3,6 +3,8 @@ import AuthService from './auth-service';
 import { Link, Redirect } from 'react-router-dom';
 
 import AppContext from '../../context/AppContext';
+import InputMask from 'react-input-mask';
+
 
 class Login extends Component {
   constructor(props){
@@ -20,14 +22,15 @@ class Login extends Component {
     
     if (this.state.redirect) {
       
-      return <Redirect to='/' />
+      return <Redirect to='/dashboard' />
     }
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const cpf = this.state.cpf;
+    const cpf = this.state.cpf.replace(/[^\d]+/g,'');
     const password = this.state.password;
+    
 
     if(cpf === "" || password === ""){
       this.setState({
@@ -92,7 +95,7 @@ class Login extends Component {
                   <label className="label">CPF</label>
 
                     <div className="control has-icons-left">
-                      <input className="input" type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+                      <InputMask mask="999.999.999-99"  className="input" type="text"  name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
 
                       <span className="icon is-small is-left">
                           <i className="fas fa-id-card"></i>
