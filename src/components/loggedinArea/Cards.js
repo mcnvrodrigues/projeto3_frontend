@@ -6,38 +6,41 @@ class Cards extends Component{
       <React.Fragment>
       <br/>
         <div class="container">
-          <div class="level">
             <div class="level-item is-gapless">
-              <div class='box'>
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-5by4">
-                      <img src="https://bulma.io/images/placeholders/128x128.png" alt="Placeholder image"/>
-                    </figure>
-                  </div>
+              {/* <div class='box'> */}
+                <div class="card card-width">
                   <div class="card-content">
                     <div class="media">
-                      <div class="media-content">
+                      <div class="media-left">
+                        <figure class="image is-64x64">
+                          <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"/>
+                        </figure>
+                      </div>
+                      <div class="media-content user-name">
                         <label class="title is-4">John Smith</label>
                         <br/>
                         <br/>
-                        <label class='Title 3'>R$ 1.000,00</label>
-                        <br/>
-                        <label class='Title 3'>x12 Parcelas</label>
-                        <br/>
-                        <label class='Title 3'>Juros 0.04</label>
-                        <br/>
+                        <label class="title is-6">São Paulo</label>
+                      </div>
+                      <div class="control accept-button">
+                        <button class="button is-link">Aceitar</button>
                       </div>
                     </div>
-                    <div class="control">
-                      <button class="button is-link">Aceitar</button>
+                    <div className='investiments-content'>
+                      <div className='value'>
+                        <p class='Title 3'>Solicitado</p>
+                        <p class='Title 3'>R$ 1.000,00</p>
+                      </div>
+                      <div className='quotes'>
+                        <p class='Title 3'>Parcelas</p>
+                        <p class='Title 3'>x12</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+        {/* </div> */}
       </React.Fragment>
     );
   }

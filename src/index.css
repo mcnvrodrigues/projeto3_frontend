@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card-width{
+  width: 500px;
+}
+
+.accept-button{
+  justify-content: right;
+}
+
+.investiments-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.accept-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quotes .value{
+  display: flex;
+  flex-direction: column;
+  color: greenyellow; 
+}

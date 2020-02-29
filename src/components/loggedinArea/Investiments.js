@@ -6,6 +6,9 @@ class Invetiments extends Component{
     return(
       <React.Fragment>
          <Cards />
+         <Cards />
+         <Cards />
+         <Cards />
       </React.Fragment>
     );
   }
