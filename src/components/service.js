@@ -7,7 +7,7 @@ class Service {
   constructor() {
     let service = axios.create({
     //   baseURL: process.env.REACT_APP_API,
-      baseURL: 'http://localhost:5000/',
+      baseURL: process.env.REACT_APP_GENERAL,
       withCredentials: true
     });
     
@@ -21,6 +21,11 @@ class Service {
 
   dependents = (confirmationCode, dependents) => {
     return this.service.post('/dependents', {confirmationCode, dependents})
+    .then(response => response.data);
+  }
+
+  loanRequest = (amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf) => {
+    return this.service.post('/loanrequest', {amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf})
     .then(response => response.data);
   }
 

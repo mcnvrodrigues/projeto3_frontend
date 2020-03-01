@@ -11,9 +11,9 @@ class Nav extends Component{
     this.service = new AuthService();
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({...this.state, loggedInUser: nextProps[this.context.state.loggedInUser]})
-  // }
+  componentWillReceiveProps(nextProps) {
+    this.setState({...this.state, loggedInUser: nextProps["userInSession"]})
+  }
 
   componentDidUpdate() {
     console.log('usuario logado >> ', this.context.state.loggedInUser);
@@ -34,7 +34,7 @@ class Nav extends Component{
         <React.Fragment>
           <nav className='navbar is-white'>
             <div className='brand-name container'>
-              <Link to='/'><img src='images/logo.png' alt='logo' className='logo'></img></Link>
+              <Link to='/'><img src='/images/logo.png' alt='logo' className='logo'></img></Link>
             </div>
             {(this.context.state.loggedInUser ?
             <div>

@@ -8,6 +8,7 @@ import { Switch, Route } from 'react-router-dom';
 import AppContext from './context/AppContext';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
+import ProtectedRoute from './components/auth/protected-route';
 import Confirmation from './components/auth/Confirmation';
 import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
@@ -66,7 +67,7 @@ class App extends Component {
       getConfirmationCode: this.getConfirmationCode
     }
 
-    this.fetchUser();
+    {this.fetchUser()}
     
     // if(this.state.loggedInUser){
     // return (
@@ -104,23 +105,35 @@ class App extends Component {
            <div className="App">
              <Nav/>
            {/* <Navbar userInSession={this.state.loggedInUser} /> */}
-             <Switch>
-               <Route exact path='/' component={Home}/>
-               <Route exact path='/signup' component={Signup}/>
-               <Route exact path='/login' component={Login}/>               
+
+           {(this.state.loggedInUser ? 
+           
+           <Switch>
+                            
                <Route exact path='/confirmation' component={EmailPage}/>
                <Route exact path='/education' component={Education}/>
-               <Route exact path='/dependents' component={Dependents}/>
-               {/* <Route exact path='/loan' component={AvailableLoan}/> */}
-               
-               <Route exact path='/dashboard' component={Dashboard}/>
+               <Route exact path='/dependents' component={Dependents}/>               
+               <Route path='/dashboard' component={Dashboard}/>
               
                {/* colocar esse rota sempre por ultimo */}
                <Route exact path='/:confirmation' component={Confirmation}/>
-               
-               {/* <Route exact path="/projects" component={ProjectList}/>
-               <Route exact path="/projects/:id" component={ProjectDetails} /> */}
+             
              </Switch>
+           :
+           <Switch>
+               <Route exact path='/' component={Home}/>
+               <Route exact path='/signup' component={Signup}/>
+               <Route exact path='/login' component={Login}/>               
+               {/* <Route exact path='/confirmation' component={EmailPage}/>
+               <Route exact path='/education' component={Education}/>
+               <Route exact path='/dependents' component={Dependents}/>               
+               <Route path='/dashboard' component={Dashboard}/>
+               <Route exact path='/:confirmation' component={Confirmation}/> */}
+             
+             </Switch>
+           
+           )}
+             
            </div>
       </AppContext.Provider>
     )

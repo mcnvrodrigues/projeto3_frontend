@@ -22,7 +22,7 @@ class Login extends Component {
     
     if (this.state.redirect) {
       
-      return <Redirect to='/dashboard' />
+      return <Redirect to={{pathname:'/dashboard'}}/>
     }
   }
 
