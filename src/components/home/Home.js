@@ -3,7 +3,6 @@ class Home extends Component{
   render(){
     return(
       <React.Fragment>
-          <img src={ 'images/imagebackground.jpeg' } alt='background'></img>
         <div className='level container'>
           <div className='has-text-left column'>
             <div className='column is-two-fifths'></div>
@@ -34,19 +33,6 @@ class Home extends Component{
             <p className='has-text-white'>Investindo com a Mutual, você ajuda quem precisa e ainda tem retornos acima do mercado.</p>
           </div>
         </div>
-        <footer className="footer has-background-dark">
-          <div className="content has-text-centered">
-            <p>
-              <strong className='has-text-white'>Coommoney</strong>
-              <span className='has-text-white'> por </span>
-              <a href="https://github.com/mcnvrodrigues"> Marciano Rodrigues </a> 
-              <span className='has-text-white'> e </span> 
-              <a href="https://github.com/Jeferson1"> Jeferson Silva </a>. 
-              <span className='has-text-white'>Codigo disponibilizado em </span>
-              <a href="https://github.com">Github.com</a>.
-            </p>
-          </div>
-        </footer>
       </React.Fragment>
     );
   }

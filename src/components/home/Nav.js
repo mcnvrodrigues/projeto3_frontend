@@ -27,7 +27,6 @@ class Nav extends Component{
     })
   }
   render(){
-    
     return(
       <AppContext.Consumer>
         { context => (
@@ -130,6 +129,7 @@ class Nav extends Component{
         </React.Fragment>
         )}
       </AppContext.Consumer>
+
     );
   }
 }
