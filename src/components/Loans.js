@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AvailableLoan from './AvailableLoan';
+import Cards from './loggedinArea/Cards';
 
 class Loan extends Component {
   render() {
@@ -20,7 +21,6 @@ class Loan extends Component {
                     <AvailableLoan info={{name:'Raissa Soares', email:'@ssraissa', loan: 700, installments: 10, rate:'0,6'}}/>
                     <AvailableLoan info={{name:'Romario Santos', email:'@romario9', loan: 800, installments: 16, rate:'0,6'}}/>
                     <AvailableLoan info={{name:'Jeferson Soares', email:'@soares33', loan: 2000, installments: 12, rate:'0,6'}}/>
-                    
                     
 
                     {/* <div className="level-item">   

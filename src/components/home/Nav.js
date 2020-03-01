@@ -86,9 +86,9 @@ class Nav extends Component{
               </div>
               <div className="dropdown-menu" id="dropdown-menu" role="menu">
                 <div className="dropdown-content">
-                  <a href="#" className="dropdown-item">
+                  <Link to='/profile' href="#" className="dropdown-item">
                     Meus Dados
-                  </a>
+                  </Link>
                   <Link to='/dashboard' className="dropdown-item">
                     Área Exclusiva
                   </Link>
