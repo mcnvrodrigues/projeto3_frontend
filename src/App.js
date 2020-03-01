@@ -102,12 +102,13 @@ class App extends Component {
 
     return (
       <AppContext.Provider value = {contextValues}>
-           <div className="App">
-             <Nav/>
+           {/* <div className="App">
+             <Nav/> */}
            {/* <Navbar userInSession={this.state.loggedInUser} /> */}
 
            {(this.state.loggedInUser ? 
-           
+           <div className="App">
+           <Nav userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
            <Switch>
                             
                <Route exact path='/confirmation' component={EmailPage}/>
@@ -119,22 +120,26 @@ class App extends Component {
                <Route exact path='/:confirmation' component={Confirmation}/>
              
              </Switch>
+
+            </div>
            :
+           <div className="App">
+           <Nav userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
            <Switch>
                <Route exact path='/' component={Home}/>
                <Route exact path='/signup' component={Signup}/>
                <Route exact path='/login' component={Login}/>               
-               {/* <Route exact path='/confirmation' component={EmailPage}/>
+               <Route exact path='/confirmation' component={EmailPage}/>
                <Route exact path='/education' component={Education}/>
                <Route exact path='/dependents' component={Dependents}/>               
                <Route path='/dashboard' component={Dashboard}/>
-               <Route exact path='/:confirmation' component={Confirmation}/> */}
+               <Route exact path='/:confirmation' component={Confirmation}/>
              
              </Switch>
-           
+             </div>
            )}
              
-           </div>
+           {/* </div> */}
       </AppContext.Provider>
     )
   }

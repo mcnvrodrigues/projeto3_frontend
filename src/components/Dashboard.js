@@ -45,7 +45,7 @@ import Service from './service';
                 cpf: this.context.state.loggedInUser.cpf,
             })
 
-            this.service.loanRequest(amount_v, installments_v, dueDate_v, rate_v, iof_v, cet_v, intallmentAmount_v, total_v, 'A', this.context.state.loggedInUser.cpf)
+            this.service.loanRequest(amount_v, installments_v, dueDate_v, rate_v, iof_v, cet_v, intallmentAmount_v, total_v, 'A', this.context.state.loggedInUser.cpf, this.context.state.loggedInUser._id)
                 .then( response => {
             console.log(response);
             

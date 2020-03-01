@@ -23,7 +23,8 @@ class Nav extends Component{
     this.service.logout()
     .then(() => {
       this.setState({ loggedInUser: null });
-      this.context.getUser(null);  
+      // this.context.getUser(null);  
+      this.props.getUser(null);  
     })
   }
   render(){
@@ -36,7 +37,9 @@ class Nav extends Component{
             <div className='brand-name container'>
               <Link to='/'><img src='/images/logo.png' alt='logo' className='logo'></img></Link>
             </div>
-            {(this.context.state.loggedInUser ?
+            {/* {(this.context.state.loggedInUser ? */}
+           
+            {(this.state.loggedInUser ?
             <div>
 
             {/*  ------------------------------------------------------------ */}
