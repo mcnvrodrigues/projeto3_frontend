@@ -18,6 +18,7 @@ import AuthService from './components/auth/auth-service';
 import Nav from './components/home/Nav';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
+import Profile from './components/loggedinArea/Profile';
 // import AvailableLoan from './components/AvailableLoan';
 
 import Dashboard from './components/Dashboard'
@@ -115,6 +116,7 @@ class App extends Component {
                <Route exact path='/confirmation' component={EmailPage}/>
                <Route exact path='/education' component={Education}/>
                <Route exact path='/dependents' component={Dependents}/>
+               <Route exact path='/profile' component={Profile}/>
                {/* <Route exact path='/loan' component={AvailableLoan}/> */}
                
                <Route exact path='/dashboard' component={Dashboard}/>
