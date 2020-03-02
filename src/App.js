@@ -2,6 +2,10 @@
 
 import React, { Component } from 'react';
 import Home from './components/home/Home';
+import Nav from './components/home/Nav';
+import Footer from './components/home/Footer';
+import Investiments from './components/loggedinArea/Investiments';
+import CreateInvestiments from './components/loggedinArea/CreateInvestiments';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
@@ -12,7 +16,6 @@ import ProtectedRoute from './components/auth/protected-route';
 import Confirmation from './components/auth/Confirmation';
 import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
-import Nav from './components/home/Nav';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
 import Profile from './components/loggedinArea/Profile';

@@ -8,6 +8,7 @@ import Loans from './Loans';
 import DashBoardContext from '../context/DashBoardContext';
 import AppContext from '../context/AppContext';
 import Service from './service';
+import LoansRequested from './LoansRequested';
 
  class Dashboard extends Component {
 
@@ -96,7 +97,7 @@ import Service from './service';
                                 <li>
                                 <Link to={"/dashboard"}>Meus Empréstimos</Link>
                                 <ul>
-                                    <li><Link to={"/dashboard"}>Solicitados</Link></li>
+                                    <li><Link to={"/dashboard/loansrequested"}>Solicitados</Link></li>
                                     <li><Link to={"/dashboard"}>Investimentos</Link></li>
                                     <li><Link to={"/dashboard"}>Aprovados</Link></li>
                                     {/* <li><a>Add a member</a></li> */}
@@ -139,7 +140,8 @@ import Service from './service';
                             <Route exact path='/dashboard/loans' component={Loans}/>  
                             <Route exact path='/dashboard/loan-request' component={CreateInvestiments}/> 
                             <Route exact path='/dashboard/confirmation-loan' component={ConfirmationLoan}/> 
-                            <Route exact path='/dashboard/confirmationloanmessage' component={ConfirmationLoanMessage}/>                       
+                            <Route exact path='/dashboard/confirmationloanmessage' component={ConfirmationLoanMessage}/>
+                            <Route exact path='/dashboard/loansrequested' component={LoansRequested}/>                      
                         {/* </Switch> */}
                         </div>
                     </div>

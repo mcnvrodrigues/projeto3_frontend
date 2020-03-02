@@ -40,8 +40,8 @@ class AuthService {
     .then(response => response.data);
   }
 
-  createpsw = (email, psswd, confpsswd) => {
-    return this.service.post('/password', {email, psswd, confpsswd})
+  createpsw = (email, psswd, confpsswd, confirmation) => {
+    return this.service.post('/password', {email, psswd, confpsswd, confirmation})
     .then(response => response.data);
   }
 
