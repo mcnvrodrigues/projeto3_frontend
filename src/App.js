@@ -126,6 +126,7 @@ class App extends Component {
                {/* <Route exact path="/projects" component={ProjectList}/>
                <Route exact path="/projects/:id" component={ProjectDetails} /> */}
              </Switch>
+            <Footer/>
            </div>
       </AppContext.Provider>
     )
