@@ -154,4 +154,5 @@ code {
 .quotes .value{
   display: flex;
   flex-direction: column;
-  color: greenyellow; 
+  color: greenyellow;
+}
