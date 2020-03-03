@@ -7,7 +7,6 @@ class Cards extends Component{
       <br/>
         <div class="container">
             <div class="level-item is-gapless">
-              {/* <div class='box'> */}
                 <div class="card card-width">
                   <div class="card-content">
                     <div class="media">
@@ -28,19 +27,24 @@ class Cards extends Component{
                     </div>
                     <div className='investiments-content'>
                       <div className='value'>
+                        <p className='Title 3'>Solicitado</p>
+                        <p className='Title 3'>R$ 1.000,00</p>
+                      </div>
+                      <div className='quotes'>
+                        <p className='Title 3'>Parcelas</p>
+                        <p className='Title 3'>x12</p>
                         <p class='Title 3'>Solicitado</p>
                         <p class='Title 3'>R$ 1.000,00</p>
                       </div>
                       <div className='quotes'>
                         <p class='Title 3'>Parcelas</p>
-                        <p class='Title 3'>x12</p>
+                        <p class='Title 3'>x12</p> dev
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-        {/* </div> */}
       </React.Fragment>
     );
   }
