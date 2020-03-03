@@ -24,10 +24,10 @@ code {
 }
 
 .home-title{
-  padding-top: 200px;
+  padding-top: 250px;
   font-family: 'Nanum Gothic Extra-Bold';
   font-size: 120px;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 1px 1px 2px #F1F4F7;
 }
 
 .home-text{
@@ -38,7 +38,7 @@ code {
 }
 
 .info-box{
-  margin-top: 100px;
+  margin-top: 180px;
 }
 
 .dropbtn {
