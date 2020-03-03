@@ -34,6 +34,13 @@ class Service {
     .then(response => response.data);
   }
 
+  singleLoan = (id) => {
+    return this.service.post('/singleRequestedloan', {id})
+    .then(response => response.data);
+  }
+
+
+
 }
 
 export default Service;
