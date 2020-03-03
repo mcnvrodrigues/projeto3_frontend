@@ -15,7 +15,6 @@ import Login from './components/auth/Login';
 import Confirmation from './components/auth/Confirmation';
 import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
-import Nav from './components/home/Nav';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
 import Profile from './components/loggedinArea/Profile';
