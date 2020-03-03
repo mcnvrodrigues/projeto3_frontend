@@ -5,7 +5,7 @@ class Home extends Component{
       <React.Fragment>
         <div className='background'>
           <h1 className='home-title'>Commoney</h1>
-          <p className='home-text'>Pessoas emprestando para pessoas, simples assim.</p>
+          <p className='home-text'>Investindo em pessoas.</p>
         </div>
         <div className='level container'>
           <div className='has-text-left column'>
@@ -34,7 +34,7 @@ class Home extends Component{
             <p className='has-text-white'>Viabilizamos o acesso ao crédito, oferecendo taxas acessíveis.</p>
 
             <h3 className='subtitle is-3 has-text-white'>+ 10 milhões investidos</h3>
-            <p className='has-text-white'>Investindo com a Mutual, você ajuda quem precisa e ainda tem retornos acima do mercado.</p>
+            <p className='has-text-white'>Investindo com a Commoney, você ajuda quem precisa e ainda tem retornos acima do mercado.</p>
           </div>
         </div>
       </React.Fragment>

@@ -18,7 +18,7 @@ class Footer extends Component{
               <span className='has-text-grey-dark'>Projeto disponibilizado em </span>
               <a href="https://github.com">Github.com</a>.
             </p>
-            <h1 className='is-size-1'>Acompanhe a Coommoney na mídia</h1>
+            <p className='is-size-2'>Acompanhe a Coommoney na mídia</p>
             <div class='partiners'>
               <img className='folha' src='https://mutual.club/assets/images/logo_folhasp.png'/>
               <img className='monitor' src='https://mutual.club/assets/images/logo_monitor.png'/>
