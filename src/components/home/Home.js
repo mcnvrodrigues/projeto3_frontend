@@ -3,9 +3,10 @@ class Home extends Component{
   render(){
     return(
       <React.Fragment>
-      <figure>
-        <img src={ 'images/imagebackground.jpeg' }></img>
-      </figure>
+        <div className='background'>
+          <h1 className='home-title'>Commoney</h1>
+          <p className='home-text'>Pessoas emprestando para pessoas, simples assim.</p>
+        </div>
         <div className='level container'>
           <div className='has-text-left column'>
             <div className='column is-two-fifths'></div>
@@ -15,17 +16,17 @@ class Home extends Component{
               <h3 className='subtitle is-3'>O nosso foco é você</h3>
               <p>Queremos resolver definitivamente o acesso ao crédito e também dar retorno justo à quem investe. 
               Entendemos as necessidades de nossos usuário para entregar a melhor experiência.</p>
-              
+              <br/>
               <h3 className='subtitle is-3'>Tecnologia a seu favor</h3>
               <p>Usamos tecnologia própria para fazer a análise e originação de crédito mais rápida do Brasil, 
               em poucos minutos, tudo está resolvido.</p>
-              
+              <br/>
               <h3 className='subtitle is-3'>Segurança</h3>
-              <p>A Mutual é uma instituição autorizada e regulada pelo Banco Central do Brasil (Bacen), 
+              <p>A Commoney é uma instituição autorizada e regulada pelo Banco Central do Brasil (Bacen), 
               
               atuando como correspondente bancário.</p>
           </div>
-          <div className='has-text-centered column is-two-fifths has-background-link'>
+          <div className='has-text-centered column is-two-fifths has-background-link info-box'>
             <h3 className='subtitle is-3 has-text-white'>+ 500.000 usuários</h3>
             <p className='has-text-white	'>Optaram por fazer um empréstimo ou investimento rápido, seguro e sem burocracia.</p>
             
