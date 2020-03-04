@@ -71,14 +71,14 @@ class CreateInvestiments extends Component{
           context => (
             <React.Fragment>
                {this.renderRedirect()}
-            <div className="container backg">
-  
-            <h3 className="title is-3" style={{'color': 'white'}}>Solicite seu empréstimo</h3>
-  
-            <h6 className="subtitle  is-6" style={{'color': 'white'}}>Defina o valor, número de parcelas e dia de vencimento desejado:</h6>
-  
+            <div className="container">
+            <div className='loan-form has-background-info'>
+              <h3 className="title is-3 hearder-investiments has-text-white-ter">Solicite seu empréstimo</h3>
+    
+              <h6 className="subtitle is-6 hearder-investiments has-text-white-ter">Defina o valor, número de parcelas e dia de vencimento desejado:</h6>
+             </div> 
               
-              <div className="box">
+              <div className="box box-form">
 
               <form onSubmit={this.handleFormSubmit}>
                 <div className="field">

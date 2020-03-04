@@ -101,7 +101,7 @@ class Signup extends Component {
           <div className="container">
             <div className="level">
 
-            <div className="level-item">
+            <div className="level-item signup-form">
             
               <form onSubmit={this.handleFormSubmit}>
                 {/* <label>Username:</label> */}
