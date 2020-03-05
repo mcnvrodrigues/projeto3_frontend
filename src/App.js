@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import Home from './components/home/Home';
 import Nav from './components/home/Nav';
-import Footer from './components/home/Footer';
 import Investiments from './components/loggedinArea/Investiments';
 import CreateInvestiments from './components/loggedinArea/CreateInvestiments';
 import './App.css';
@@ -126,7 +125,6 @@ class App extends Component {
                {/* <Route exact path="/projects" component={ProjectList}/>
                <Route exact path="/projects/:id" component={ProjectDetails} /> */}
              </Switch>
-            <Footer/>
            </div>
       </AppContext.Provider>
     )

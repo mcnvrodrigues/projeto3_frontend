@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Footer from './Footer';
 class Home extends Component{
   render(){
     return(
@@ -37,6 +38,7 @@ class Home extends Component{
             <p className='has-text-white'>Investindo com a Commoney, você ajuda quem precisa e ainda tem retornos acima do mercado.</p>
           </div>
         </div>
+        <Footer/>
       </React.Fragment>
     );
   }
