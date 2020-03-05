@@ -28,7 +28,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = { 
-      loggedInUser: null, 
+      loggedInUser: null,
       confirmationCode: ''
     };
     this.service = new AuthService();
@@ -53,8 +53,9 @@ class App extends Component {
 
   getTheUser= (userObj) => {
     this.setState({
-      loggedInUser: userObj
+      loggedInUser: userObj,
     })
+    // this.props.history.push('/dashboard')
   } 
 
   getConfirmationCode = (code) => {
@@ -110,7 +111,7 @@ class App extends Component {
              <Nav/> */}
            {/* <Navbar userInSession={this.state.loggedInUser} /> */}
 
-           {(this.state.loggedInUser ? 
+           {/* {(this.state.loggedInUser ? 
            <div className="App">
            <Nav userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
            <Switch>
@@ -120,7 +121,7 @@ class App extends Component {
                <Route exact path='/dependents' component={Dependents}/>               
                <Route path='/dashboard' component={Dashboard}/>
               
-               {/* colocar esse rota sempre por ultimo */}
+               
                <Route exact path='/:confirmation' component={Confirmation}/>
              
              </Switch>
@@ -137,18 +138,35 @@ class App extends Component {
                <Route exact path='/education' component={Education}/>
                <Route exact path='/dependents' component={Dependents}/>
                <Route exact path='/profile' component={Profile}/>
-               {/* <Route exact path='/loan' component={AvailableLoan}/> */}
+               
                
                <Route exact path='/dashboard' component={Dashboard}/>
               
-               {/* colocar esse rota sempre por ultimo */}
+               
                <Route exact path='/:confirmation' component={Confirmation}/>
              
              </Switch>
              </div>
-           )}
+           )} */}
              
            {/* </div> */}
+
+        <div className="App">
+            <Nav userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+                
+            <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/signup' component={Signup}/>
+              <Route exact path='/login' component={Login}/>               
+              <Route exact path='/confirmation' component={EmailPage}/>
+              <Route exact path='/education' component={Education}/>
+              <Route exact path='/dependents' component={Dependents}/>
+              <ProtectedRoute exact path='/profile' user={this.state.loggedInUser} component={() => <Profile />}/>    
+              <ProtectedRoute path='/dashboard' user={this.state.loggedInUser} component={Dashboard} />        
+              <Route exact path='/:confirmation' component={Confirmation}/>    
+
+            </Switch>
+        </div>
       </AppContext.Provider>
     )
   }

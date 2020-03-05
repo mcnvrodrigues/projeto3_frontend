@@ -5,6 +5,7 @@ import CreateInvestiments from './CreateInvestiments';
 import ConfirmationLoan from './ConfirmationLoan';
 import ConfirmationLoanMessage from './ConfirmationLoanMessage';
 import Loans from './Loans';
+import Loan from './Loan';
 import DashBoardContext from '../context/DashBoardContext';
 import AppContext from '../context/AppContext';
 import Service from './service';
@@ -31,6 +32,10 @@ import LoanRequested from './LoanRequested';
         this.service = new Service();
     }
 
+    componentDidMount(){
+        console.log('dashboard props >>>', this.props);
+    }
+
     requestLoan = () => {
 
         let amount_v = this.state.loanRequest.amount;
@@ -41,13 +46,17 @@ import LoanRequested from './LoanRequested';
         let cet_v = this.state.loanRequest.cet;
         let intallmentAmount_v = this.state.loanRequest.intallmentAmount;
         let total_v = this.state.loanRequest.total;
+        let cpf = this.context.state.loggedInUser.cpf;
+        let id = this.context.state.loggedInUser._id;
+        let name = this.context.state.loggedInUser.nome;
+
 
         if(this.context.state.loggedInUser.cpf){
             this.setState({
                 cpf: this.context.state.loggedInUser.cpf,
             })
 
-            this.service.loanRequest(amount_v, installments_v, dueDate_v, rate_v, iof_v, cet_v, intallmentAmount_v, total_v, 'A', this.context.state.loggedInUser.cpf, this.context.state.loggedInUser._id)
+            this.service.loanRequest(amount_v, installments_v, dueDate_v, rate_v, iof_v, cet_v, intallmentAmount_v, total_v, 'A', cpf, id, name)
                 .then( response => {
             console.log(response);
             
@@ -139,6 +148,7 @@ import LoanRequested from './LoanRequested';
                         {/* <Switch> */}
                             <Route exact path='/dashboard' component={Restricted}/> 
                             <Route exact path='/dashboard/loans' component={Loans}/>  
+                            <Route exact path='/dashboard/loans/:id' component={Loan}/>
                             <Route exact path='/dashboard/loan-request' component={CreateInvestiments}/> 
                             <Route exact path='/dashboard/confirmation-loan' component={ConfirmationLoan}/> 
                             <Route exact path='/dashboard/confirmationloanmessage' component={ConfirmationLoanMessage}/>

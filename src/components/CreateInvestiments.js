@@ -100,8 +100,8 @@ class CreateInvestiments extends Component{
        
                   </div> */}
 
-                <div class="control">
-                  <select class="input" name="country" onClick={ e => this.handleClickInstallments(e)}>
+                <div className="control">
+                  <select className="input" name="country" onClick={ e => this.handleClickInstallments(e)}>
                   <option value="6" >x6</option>
                     <option value="9">x9</option>
                     <option value="12">x12</option>
@@ -123,8 +123,8 @@ class CreateInvestiments extends Component{
                 </div> */}
 
 
-                <div class="control">
-                  <select class="input" name="country" onClick={ e => this.handleClickDueDate(e)}>
+                <div className="control">
+                  <select className="input" name="country" onClick={ e => this.handleClickDueDate(e)}>
                   <option value="5">5</option>
                     <option value="10">10</option>
                     <option value="15">15</option>

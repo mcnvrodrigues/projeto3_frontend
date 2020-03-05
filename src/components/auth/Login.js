@@ -18,11 +18,11 @@ class Login extends Component {
     this.service = new AuthService();
   }
 
-  renderRedirect = () => {
-    
+  renderRedirect = () => {   
+    console.log(`renderRedirect`, this.state.redirect);
     if (this.state.redirect) {
       
-      return <Redirect to={{pathname:'/dashboard'}}/>
+      return <Redirect to='/dashboard'/>
     }
   }
 
@@ -39,13 +39,16 @@ class Login extends Component {
     }else{
       this.service.login(cpf, password)
       .then( response => {
-        this.setState({ cpf: "", password: "" });
-
-        this.setState({
-          redirect: true
-        });
-
+        
         this.context.getUser(response)
+
+        this.setState(
+          { 
+            cpf: "", 
+            password: "",
+            redirect: true
+           });
+
       })
       .catch( error => {
         console.log(error);
@@ -73,14 +76,20 @@ class Login extends Component {
     this.setState({[name]: value});
     this.setState({dadosInvalidos:0});
   }
+
     
   render(){
+    
+    if (this.state.redirect) {
+      
+      return <Redirect to='/dashboard' user={this.state.user} />
+    }
+
     return(
       <AppContext.Consumer>
         { context => (
           
           <div>
-            {this.renderRedirect()}
           <div className="container">
             
             <div className="level">

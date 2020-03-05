@@ -24,8 +24,8 @@ class Service {
     .then(response => response.data);
   }
 
-  loanRequest = (amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id) => {
-    return this.service.post('/loanrequest', {amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id})
+  loanRequest = (amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id, name) => {
+    return this.service.post('/loanrequest', {amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id, name})
     .then(response => response.data);
   }
 
@@ -39,7 +39,10 @@ class Service {
     .then(response => response.data);
   }
 
-
+  availableLoans = (id) => {
+    return this.service.post('/availableloans', {id})
+    .then(response => response.data);
+  }
 
 }
 
