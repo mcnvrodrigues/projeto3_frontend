@@ -69,7 +69,7 @@ class AvailableLoan extends Component {
                         </div>
 
                         <div className="media-content">
-                            <p>{this.props.loanp.rate} a.a.</p>
+                            <p>{this.props.loanp.rate} a.m.</p>
                         </div>
                       </div>
                     </div>

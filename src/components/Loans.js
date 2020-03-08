@@ -3,7 +3,7 @@ import AvailableLoan from './AvailableLoan';
 import AppContext from '../context/AppContext';
 import Service from './service';
 import { Link, Redirect } from 'react-router-dom';
-import Cards from './loggedinArea/Cards';
+import Cards from './loggedinArea/Cards'
 
 class Loan extends Component {
 
@@ -58,8 +58,8 @@ class Loan extends Component {
                   
                     this.state.availableloans.loans.map((loan, i) => {
                       return <Link to={`/dashboard/loans/${loan._id}`} key={i} >                       
-                          <AvailableLoan loanp={loan} />
-                          {/* {console.log('emprestimos >> ', this.state.loansreq[0])} */}
+                          {/* <AvailableLoan loanp={loan} user={context.state.loggedInUser} /> */}
+                          <Cards loanp={loan} user={context.state.loggedInUser} />
                       </Link>
                     })
                   

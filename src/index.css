@@ -142,16 +142,16 @@ code {
 }
 
 .card-width{
-  width: 500px;
+  width: 450px;
 }
 
 .accept-button{
   justify-content: right;
 }
 
-.investiments-content {
+.investments-content {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .accept-button {

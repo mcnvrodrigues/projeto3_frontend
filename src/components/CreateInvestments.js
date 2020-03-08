@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import dashboardContext from '../context/DashBoardContext';
 
-class CreateInvestiments extends Component{
+class CreateInvestments extends Component{
   constructor(props){
     super(props);
     this.state = { 
@@ -156,5 +156,5 @@ class CreateInvestiments extends Component{
   }
 }
 
-CreateInvestiments.contextType = dashboardContext;
-export default CreateInvestiments;
+CreateInvestments.contextType = dashboardContext;
+export default CreateInvestments;

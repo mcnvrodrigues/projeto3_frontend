@@ -5,7 +5,7 @@ import Cards from './loggedinArea/Cards';
 import { Link, Redirect } from 'react-router-dom';
 import AvailableLoan from './AvailableLoan';
 
-class LoansRequested extends Component {
+class Approved extends Component {
   constructor(props){
     super(props);
     this.state = { 
@@ -16,7 +16,7 @@ class LoansRequested extends Component {
   }
 
   componentDidMount(){
-    this.service.myloans(this.context.state.loggedInUser._id)
+    this.service.loansApproved(this.context.state.loggedInUser._id)
     .then(response => {
       this.setState({
         loansreq: response
@@ -46,8 +46,8 @@ class LoansRequested extends Component {
                   
                   this.state.loansreq.loans.map((loan, i) => {
                     return <Link to={`/dashboard/loansrequested/${loan._id}`} key={i} >                       
-                        <AvailableLoan loanp={loan} user={context.state.loggedInUser} />
-                        {console.log('emprestimos >> ', this.state.loansreq[0])}
+                        <Cards loanp={loan} user={context.state.loggedInUser} />
+                        
                     </Link>
                   })
                   
@@ -68,5 +68,5 @@ class LoansRequested extends Component {
   }
 }
 
-LoansRequested.contextType = AppContext;
-export default LoansRequested;
+Approved.contextType = AppContext;
+export default Approved;

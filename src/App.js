@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 import Home from './components/home/Home';
 import Nav from './components/home/Nav';
 import Footer from './components/home/Footer';
-import Investiments from './components/loggedinArea/Investiments';
-import CreateInvestiments from './components/loggedinArea/CreateInvestiments';
+
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
@@ -19,6 +18,7 @@ import AuthService from './components/auth/auth-service';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
 import Profile from './components/loggedinArea/Profile';
+import ProfileForm from './components/ProfileForm';
 // import AvailableLoan from './components/AvailableLoan';
 
 import Dashboard from './components/Dashboard'
@@ -161,6 +161,7 @@ class App extends Component {
               <Route exact path='/confirmation' component={EmailPage}/>
               <Route exact path='/education' component={Education}/>
               <Route exact path='/dependents' component={Dependents}/>
+              <Route exact path='/profileform' component={ProfileForm}/>
               <ProtectedRoute exact path='/profile' user={this.state.loggedInUser} component={() => <Profile />}/>    
               <ProtectedRoute path='/dashboard' user={this.state.loggedInUser} component={Dashboard} />        
               <Route exact path='/:confirmation' component={Confirmation}/>    
