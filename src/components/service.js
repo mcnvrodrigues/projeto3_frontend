@@ -24,8 +24,8 @@ class Service {
     .then(response => response.data);
   }
 
-  loanRequest = (amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id, name, quotas) => {
-    return this.service.post('/loanrequest', {amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id, name, quotas})
+  loanRequest = (amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id, name, quotas, imgPath) => {
+    return this.service.post('/loanrequest', {amount, installments, dueDate, rate, iof, cet, installmentAmount, total, type, cpf, id, name, quotas, imgPath})
     .then(response => response.data);
   }
 
@@ -56,6 +56,16 @@ class Service {
 
   provideLoan = (id, provider) => {
     return this.service.post('/provideloan', {id, provider})
+    .then(response => response.data);
+  }
+
+  handleUpload = (theFile) => {
+    return this.service.post('/uploadprofilephoto', theFile)
+    .then(response => response.data);
+  }
+
+  profile = (id, state, city, imageUrl) => {
+    return this.service.post('/profile', {id, state, city, imageUrl})
     .then(response => response.data);
   }
 

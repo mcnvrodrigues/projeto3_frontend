@@ -20,7 +20,7 @@ class Dependents extends Component {
     
         if (this.state.redirect) {
           
-          return <Redirect to='/' />
+          return <Redirect to='/profileform' />
         }
       }
 
@@ -48,7 +48,7 @@ class Dependents extends Component {
 
         this.service.dependents(this.context.state.confirmationCode, dep)
         .then( response => {
-                      
+            // this.context.getUser(response);
             this.setState({
               redirect: true
             });

@@ -13,6 +13,7 @@ class Cards extends Component{
     const installments_v = this.props.loanp.installments;
     const rate_v = this.props.loanp.rate * 12;
     const singleQuotaValue_v = this.props.loanp.singleQuotaValue;
+    const imgPath_v = this.props.loanp.claimantPhoto;
 
 
     this.state = { 
@@ -20,12 +21,14 @@ class Cards extends Component{
       amount: amount_v,
       installments: installments_v,
       rate: rate_v,
-      singleQuotaValue: singleQuotaValue_v
+      singleQuotaValue: singleQuotaValue_v,
+      imgPath: imgPath_v
     };
     
   }
 
   render(){
+
     return(
       <AppContext.Consumer>
         {context => ( 
@@ -38,7 +41,7 @@ class Cards extends Component{
                     <div className="media">
                           <div className="media-left">
                             <figure className="image is-64x64">
-                              <img className="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"/>
+                              <img className="is-rounded" src={this.state.imgPath} alt="Placeholder image"/>
                             </figure>
                           </div>
 
@@ -55,7 +58,7 @@ class Cards extends Component{
                         
                        
                         
-                        <div class="content">
+                        <div className="content">
                         <div className='investments-content'>
                           <div className='media-content'>
                             <p className='subtitle is-6'>Solicitado</p>
@@ -91,4 +94,5 @@ class Cards extends Component{
   }
 }
 
+Cards.contextType = AppContext;
 export default Cards;

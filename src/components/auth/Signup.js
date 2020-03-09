@@ -88,8 +88,8 @@ class Signup extends Component {
   
   handleChange = (event) => {  
     const {name, value} = event.target;
-    this.setState({[name]: value});
-    this.setState({cpfUtilizado:0});
+    this.setState({[name]: value,
+      cpfUtilizado:0});
   }
 
   render(){

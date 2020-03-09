@@ -52,6 +52,7 @@ import Approved from './Approved';
         let cpf = this.context.state.loggedInUser.cpf;
         let id = this.context.state.loggedInUser._id;
         let name = this.context.state.loggedInUser.nome;
+        let imgPath = this.context.state.loggedInUser.imgPath;
 
 
         if(this.context.state.loggedInUser.cpf){
@@ -59,7 +60,7 @@ import Approved from './Approved';
                 cpf: this.context.state.loggedInUser.cpf,
             })
 
-            this.service.loanRequest(amount_v, installments_v, dueDate_v, rate_v, iof_v, cet_v, intallmentAmount_v, total_v, 'A', cpf, id, name, 4)
+            this.service.loanRequest(amount_v, installments_v, dueDate_v, rate_v, iof_v, cet_v, intallmentAmount_v, total_v, 'A', cpf, id, name, 4, imgPath)
             .then(response => {
                 console.log(response);            
             })
