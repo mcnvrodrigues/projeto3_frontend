@@ -5,15 +5,21 @@ import AppContext from '../../context/AppContext';
 import AuthService from '../auth/auth-service';
 
 class Nav extends Component{
+  
   constructor(props){
     super(props);
-    this.state = { loggedInUser: null };
+
+
+    this.state = { 
+      loggedInUser: null};
     this.service = new AuthService();
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({...this.state, loggedInUser: nextProps[this.context.state.loggedInUser]})
-  // }
+  componentWillReceiveProps(nextProps) {
+    this.setState({...this.state, loggedInUser: nextProps["userInSession"]})
+  }
+
+ 
 
   componentDidUpdate() {
     console.log('usuario logado >> ', this.context.state.loggedInUser);
@@ -23,7 +29,8 @@ class Nav extends Component{
     this.service.logout()
     .then(() => {
       this.setState({ loggedInUser: null });
-      this.context.getUser(null);  
+      // this.context.getUser(null);  
+      this.props.getUser(null);  
     })
   }
   render(){
@@ -33,9 +40,11 @@ class Nav extends Component{
         <React.Fragment>
           <nav className='navbar is-white'>
             <div className='brand-name container'>
-              <Link to='/'><img src='images/logo.png' alt='logo' className='logo'></img></Link>
+              <Link to='/'><img src='/images/logo.png' alt='logo' className='logo'></img></Link>
             </div>
-            {(this.context.state.loggedInUser ?
+            {/* {(this.context.state.loggedInUser ? */}
+           
+            {(this.state.loggedInUser ?
             <div>
 
             {/*  ------------------------------------------------------------ */}
@@ -73,8 +82,8 @@ class Nav extends Component{
             {/* ------------------------- DROPDOWN MENU ------------------------- */}
             <div className="dropdown is-active drop-space">
               <div className="dropdown-trigger">
-                <button className="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Olá, Tangamandapiano</span>
+                <button className="button button-width" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Olá, {(this.state.loggedInUser.nome).substring(0, (this.state.loggedInUser.nome).indexOf(" "))}</span>
                   <span className="icon is-small">
                     <i className="fas fa-angle-down" aria-hidden="true"></i>
                   </span>

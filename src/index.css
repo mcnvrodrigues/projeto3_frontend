@@ -161,17 +161,25 @@ code {
   width: 250px;
 }
 
+.backg{
+  background-color: #3273dc;
+}
+
+.loan-card{
+  width: 90%;
+}
+
 .card-width{
-  width: 500px;
+  width: 450px;
 }
 
 .accept-button{
   justify-content: right;
 }
 
-.investiments-content {
+.investments-content {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .accept-button {
@@ -183,6 +191,11 @@ code {
   display: flex;
   flex-direction: column;
   color: greenyellow; 
+}
+
+
+.button-width{
+  width: 220px;
 }
 
 
@@ -217,3 +230,4 @@ iframe {
 .map {
   margin-top: 80px;
 }
+

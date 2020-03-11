@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class CreateInvestiments extends Component{
+class CreateInvestments extends Component{
   render(){
     return(
       <React.Fragment>
@@ -43,7 +43,7 @@ class CreateInvestiments extends Component{
                   <button class="button is-link">Salvar</button>
                 </div>
                 <div class="control">
-                  <Link to='/Investiments'><button class="button is-link is-light">Cancelar</button></Link>
+                  <Link to='/Investments'><button class="button is-link is-light">Cancelar</button></Link>
                 </div>
               </div>
             </div>
@@ -53,4 +53,4 @@ class CreateInvestiments extends Component{
   }
 }
 
-export default CreateInvestiments;
+export default CreateInvestments;

@@ -56,6 +56,7 @@ class Confirmation extends Component{
     const email = this.state.email;
     const psswd = this.state.psswd;
     const confpsswd = this.state.confpsswd;
+    const confirmation = this.props.match.params.confirmation;
 
     if(psswd === "" || confpsswd === ""){
       this.setState({
@@ -66,7 +67,7 @@ class Confirmation extends Component{
         statusSenha: 3,
       });
     }else{
-      this.service.createpsw(email, psswd, confpsswd)
+      this.service.createpsw(email, psswd, confpsswd, confirmation)
       .then( response => {
           this.setState({
               email: "",

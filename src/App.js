@@ -3,20 +3,26 @@
 import React, { Component } from 'react';
 import Home from './components/home/Home';
 import Nav from './components/home/Nav';
+
+import Footer from './components/home/Footer';
+
 import Investiments from './components/loggedinArea/Investiments';
 import CreateInvestiments from './components/loggedinArea/CreateInvestiments';
+
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 
 import AppContext from './context/AppContext';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
+import ProtectedRoute from './components/auth/protected-route';
 import Confirmation from './components/auth/Confirmation';
 import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
 import Profile from './components/loggedinArea/Profile';
+import ProfileForm from './components/ProfileForm';
 // import AvailableLoan from './components/AvailableLoan';
 
 import Dashboard from './components/Dashboard'
@@ -26,7 +32,7 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = { 
-      loggedInUser: null, 
+      loggedInUser: null,
       confirmationCode: ''
     };
     this.service = new AuthService();
@@ -51,8 +57,9 @@ class App extends Component {
 
   getTheUser= (userObj) => {
     this.setState({
-      loggedInUser: userObj
+      loggedInUser: userObj,
     })
+    // this.props.history.push('/dashboard')
   } 
 
   getConfirmationCode = (code) => {
@@ -69,7 +76,7 @@ class App extends Component {
       getConfirmationCode: this.getConfirmationCode
     }
 
-    this.fetchUser();
+    {this.fetchUser()}
     
     // if(this.state.loggedInUser){
     // return (
@@ -104,10 +111,30 @@ class App extends Component {
 
     return (
       <AppContext.Provider value = {contextValues}>
-           <div className="App">
-             <Nav/>
+           {/* <div className="App">
+             <Nav/> */}
            {/* <Navbar userInSession={this.state.loggedInUser} /> */}
-             <Switch>
+
+           {/* {(this.state.loggedInUser ? 
+           <div className="App">
+           <Nav userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+           <Switch>
+                            
+               <Route exact path='/confirmation' component={EmailPage}/>
+               <Route exact path='/education' component={Education}/>
+               <Route exact path='/dependents' component={Dependents}/>               
+               <Route path='/dashboard' component={Dashboard}/>
+              
+               
+               <Route exact path='/:confirmation' component={Confirmation}/>
+             
+             </Switch>
+
+            </div>
+           :
+           <div className="App">
+           <Nav userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+           <Switch>
                <Route exact path='/' component={Home}/>
                <Route exact path='/signup' component={Signup}/>
                <Route exact path='/login' component={Login}/>               
@@ -115,17 +142,36 @@ class App extends Component {
                <Route exact path='/education' component={Education}/>
                <Route exact path='/dependents' component={Dependents}/>
                <Route exact path='/profile' component={Profile}/>
-               {/* <Route exact path='/loan' component={AvailableLoan}/> */}
+               
                
                <Route exact path='/dashboard' component={Dashboard}/>
               
-               {/* colocar esse rota sempre por ultimo */}
-               <Route exact path='/:confirmation' component={Confirmation}/>
                
-               {/* <Route exact path="/projects" component={ProjectList}/>
-               <Route exact path="/projects/:id" component={ProjectDetails} /> */}
+               <Route exact path='/:confirmation' component={Confirmation}/>
+             
              </Switch>
-           </div>
+             </div>
+           )} */}
+             
+           {/* </div> */}
+
+        <div className="App">
+            <Nav userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+                
+            <Switch>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/signup' component={Signup}/>
+              <Route exact path='/login' component={Login}/>               
+              <Route exact path='/confirmation' component={EmailPage}/>
+              <Route exact path='/education' component={Education}/>
+              <Route exact path='/dependents' component={Dependents}/>
+              <Route exact path='/profileform' component={ProfileForm}/>
+              <ProtectedRoute exact path='/profile' user={this.state.loggedInUser} component={() => <Profile />}/>    
+              <ProtectedRoute path='/dashboard' user={this.state.loggedInUser} component={Dashboard} />        
+              <Route exact path='/:confirmation' component={Confirmation}/>    
+
+            </Switch>
+        </div>
       </AppContext.Provider>
     )
   }

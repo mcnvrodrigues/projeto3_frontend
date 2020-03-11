@@ -20,8 +20,8 @@ class AvailableLoan extends Component {
                     <div >
 
                     
-                    <p className="title is-6">{this.props.info.name}</p>
-                    <p className="subtitle is-6">{this.props.info.email}</p>
+                    <p className="title is-6">{(this.props.loanp.claimantName).substring(0, (this.props.loanp.claimantName).indexOf(" "))}</p>
+                    
                     </div>
                   </div>
                 </div>
@@ -37,7 +37,7 @@ class AvailableLoan extends Component {
                         </div>
 
                         <div className="media-content">
-                            <p>R$ {this.props.info.loan}</p>
+                            <p>R$ {this.props.loanp.amount}</p>
                         </div>
                       </div>
                     </div>
@@ -53,7 +53,7 @@ class AvailableLoan extends Component {
                         </div>
 
                         <div className="media-content">
-                            <p>{this.props.info.installments} parcelas</p>
+                            <p>{this.props.loanp.installments} parcelas</p>
                         </div>
                       </div>
                     </div>
@@ -69,7 +69,7 @@ class AvailableLoan extends Component {
                         </div>
 
                         <div className="media-content">
-                            <p>{this.props.info.rate} a.a.</p>
+                            <p>{this.props.loanp.rate} a.m.</p>
                         </div>
                       </div>
                     </div>
