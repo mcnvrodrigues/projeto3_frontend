@@ -14,6 +14,7 @@ import LoanRequested from './LoanRequested';
 import Investments from './Investments';
 import Investment from './Investment';
 import Approved from './Approved';
+import BankStatement from './BankStatement';
 
  class Dashboard extends Component {
 
@@ -138,7 +139,7 @@ import Approved from './Approved';
                             
                             <ul className="menu-list">
                                 <li><Link to={"/dashboard"}>Pagamentos</Link></li>
-                                <li><Link to={"/dashboard"}>Extrato</Link></li>
+                                <li><Link to={"/dashboard/statements"}>Extrato</Link></li>
                                 <li><Link to={"/dashboard"}>Saldo</Link></li>
                             </ul>
                         </aside>
@@ -158,7 +159,8 @@ import Approved from './Approved';
                             <Route exact path='/dashboard/loansrequested' component={LoansRequested}/>    
                             <Route exact path='/dashboard/investments' component={Investments}/>
                             <Route exact path='/dashboard/investment/:id' component={Investment}/>
-                            <Route exact path='/dashboard/approved' component={Approved}/>    
+                            <Route exact path='/dashboard/approved' component={Approved}/>   
+                            <Route exact path='/dashboard/statements' component={BankStatement}/> 
                             <Route exact path='/dashboard/loansrequested/:id' component={LoanRequested}/>                   
                         {/* </Switch> */}
                         </div>

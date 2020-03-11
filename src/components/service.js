@@ -34,6 +34,11 @@ class Service {
     .then(response => response.data);
   }
 
+  statements = (id) => {
+    return this.service.post('/statements', {id})
+    .then(response => response.data);
+  }
+
   myInvestments = (id) => {
     return this.service.post('/myinvestments', {id})
     .then(response => response.data);
