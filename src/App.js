@@ -6,7 +6,7 @@ import Nav from './components/home/Nav';
 
 import Footer from './components/home/Footer';
 
-import Investiments from './components/loggedinArea/Investiments';
+//import Investiments from './components/loggedinArea/Investiments';
 import CreateInvestiments from './components/loggedinArea/CreateInvestiments';
 
 import './App.css';
