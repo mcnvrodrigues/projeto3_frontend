@@ -177,6 +177,17 @@ code {
   justify-content: right;
 }
 
+.investiments-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.accept-button {
+  font-family: 'Nanum Gothic';
+  display: flex;
+  justify-content: flex-end;
+}
+
 .investments-content {
   display: flex;
   justify-content: space-between;
@@ -231,3 +242,30 @@ iframe {
   margin-top: 80px;
 }
 
+.hearder-investiments {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Nanum Gothic';
+}
+
+.loan-form{
+  margin-top: 100px;
+  margin-right: 200px;
+  margin-left: 200px;
+  border-radius: 10px;
+}
+
+.box-form{
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+
+.login-form{
+  margin-top: 160px;
+}
+
+.signup-form{
+  margin-top: 160px;
+}
