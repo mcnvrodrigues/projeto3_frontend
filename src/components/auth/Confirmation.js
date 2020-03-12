@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AuthService from './auth-service';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
 
 class Confirmation extends Component{
@@ -21,7 +21,7 @@ class Confirmation extends Component{
     
     if (this.state.redirect) {
       
-      return <Redirect to='/education' />
+      return <Redirect to='/education'/>
     }
   }
 
@@ -34,13 +34,21 @@ class Confirmation extends Component{
     
     this.service.confirmation(confirmation)
     .then( response => {
-      this.context.getUser(response);
-      
+      // this.context.getUser(response);
+      console.log('confirmation ++++', response);
       this.setState({
         email: response.user.email
-      })
+      });
+
+      this.context.getConfirmationCode(confirmation);
     })
-    .catch(err => console.log(err));
+    .catch( error => {
+      // console.log(error);
+      console.log('confirmation code nao existe')
+      this.setState({
+        statusSenha: 4, // caso o confirmation code não exista
+      });  
+    });
   }
 
   handleFormSubmit = (event) => {
@@ -48,6 +56,7 @@ class Confirmation extends Component{
     const email = this.state.email;
     const psswd = this.state.psswd;
     const confpsswd = this.state.confpsswd;
+    const confirmation = this.props.match.params.confirmation;
 
     if(psswd === "" || confpsswd === ""){
       this.setState({
@@ -58,7 +67,7 @@ class Confirmation extends Component{
         statusSenha: 3,
       });
     }else{
-      this.service.createpsw(email, psswd, confpsswd)
+      this.service.createpsw(email, psswd, confpsswd, confirmation)
       .then( response => {
           this.setState({
               email: "",
@@ -104,46 +113,53 @@ class Confirmation extends Component{
               { context => (
                 <div>
                   {this.renderRedirect()}
-                <div className="container">
-                  <div className="level">
-      
-                  <div className="level-item">
-                  
-                    <form onSubmit={this.handleFormSubmit}>
-                      {/* <label>Username:</label> */}
-      
-                      <div className="field">
-      
-                        <label className="label">Crie uma senha</label>
-      
-                          <div className="control">
-                            <input className="input" type="password"  name="psswd" value={this.state.psswd} onChange={ e => this.handleChange(e)}/>
-                          </div>
-      
-                      </div>  
+                  {(this.state.statusSenha === 4?
 
-                      <div className="field">
-      
-                        <label className="label">Confirme a sua senha</label>
-      
-                          <div className="control">
-                            <input className="input" type="password"  name="confpsswd" value={this.state.confpsswd} onChange={ e => this.handleChange(e)}/>
-                          </div>
-      
-                      </div> 
+                    <span className="tag is-danger">Link de confirmação não existe. Favor verificar seu email.</span>
+
+                  :
+                  <div className="container">
+                    <div className="level">
+        
+                    <div className="level-item">
+                    
+                      <form onSubmit={this.handleFormSubmit}>
+                        {/* <label>Username:</label> */}
+        
+                        <div className="field">
+        
+                          <label className="label">Crie uma senha</label>
+        
+                            <div className="control">
+                              <input className="input" type="password"  name="psswd" value={this.state.psswd} onChange={ e => this.handleChange(e)}/>
+                            </div>
+        
+                        </div>  
+  
+                        <div className="field">
+        
+                          <label className="label">Confirme a sua senha</label>
+        
+                            <div className="control">
+                              <input className="input" type="password"  name="confpsswd" value={this.state.confpsswd} onChange={ e => this.handleChange(e)}/>
+                            </div>
+        
+                        </div> 
+                          
+                        <div className="control">
+                          <input type='submit' className="button is-link  is-fullwidth"/>
+                        </div>
+  
+                        {(this.state.statusSenha === 1?<p className="help is-danger">Crie uma senha!</p>:<div></div>)}
+                        {(this.state.statusSenha === 3?<p className="help is-danger">As senhas não são idênticas!</p>:<div></div>)}
                         
-                      <div className="control">
-                        <input type='submit' className="button is-link  is-fullwidth"/>
-                      </div>
-
-                      {(this.state.statusSenha === 1?<p className="help is-danger">Crie uma senha!</p>:<div></div>)}
-                      {(this.state.statusSenha === 3?<p className="help is-danger">As senhas não são idênticas!</p>:<div></div>)}
-                    </form>                   
-      
+                      </form>                   
+        
+                    </div>
+                  
                   </div>
-                
-                </div>
-              </div>
+                </div>)}
+                  
               </div>
               )}
             </AppContext.Consumer>

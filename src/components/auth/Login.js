@@ -3,6 +3,8 @@ import AuthService from './auth-service';
 import { Link, Redirect } from 'react-router-dom';
 
 import AppContext from '../../context/AppContext';
+import InputMask from 'react-input-mask';
+
 
 class Login extends Component {
   constructor(props){
@@ -16,18 +18,19 @@ class Login extends Component {
     this.service = new AuthService();
   }
 
-  renderRedirect = () => {
-    
+  renderRedirect = () => {   
+    console.log(`renderRedirect`, this.state.redirect);
     if (this.state.redirect) {
       
-      return <Redirect to='/' />
+      return <Redirect to='/dashboard'/>
     }
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const cpf = this.state.cpf;
+    const cpf = this.state.cpf.replace(/[^\d]+/g,'');
     const password = this.state.password;
+    
 
     if(cpf === "" || password === ""){
       this.setState({
@@ -36,13 +39,16 @@ class Login extends Component {
     }else{
       this.service.login(cpf, password)
       .then( response => {
-        this.setState({ cpf: "", password: "" });
-
-        this.setState({
-          redirect: true
-        });
-
+        
         this.context.getUser(response)
+
+        this.setState(
+          { 
+            cpf: "", 
+            password: "",
+            redirect: true
+           });
+
       })
       .catch( error => {
         console.log(error);
@@ -70,14 +76,20 @@ class Login extends Component {
     this.setState({[name]: value});
     this.setState({dadosInvalidos:0});
   }
+
     
   render(){
+    
+    if (this.state.redirect) {
+      
+      return <Redirect to='/dashboard' user={this.state.user} />
+    }
+
     return(
       <AppContext.Consumer>
         { context => (
           
           <div>
-            {this.renderRedirect()}
           <div className="container">
             
             <div className="level">
@@ -92,7 +104,7 @@ class Login extends Component {
                   <label className="label">CPF</label>
 
                     <div className="control has-icons-left">
-                      <input className="input" type="text" placeholder="xxx.xxx.xxx-xx" name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
+                      <InputMask mask="999.999.999-99"  className="input" type="text"  name="cpf" value={this.state.cpf} onChange={ e => this.handleChange(e)}/>
 
                       <span className="icon is-small is-left">
                           <i className="fas fa-id-card"></i>
@@ -105,7 +117,7 @@ class Login extends Component {
 
                   <label className="label">Senha</label>
 
-                    <div className="control has-icons-left">
+                    <div className="control has-icons-left esp-bottom">
                       <input className="input" type="password"  name="password" value={this.state.password} onChange={ e => this.handleChange(e)}/>
 
                       <span className="icon is-small is-left">
@@ -115,6 +127,9 @@ class Login extends Component {
 
                 </div>
 
+                
+
+
                
                 <div className="control">
                   <input type='submit' className="button is-link  is-fullwidth" value='Entrar'/>
@@ -122,7 +137,7 @@ class Login extends Component {
                 {(this.state.dadosInvalidos === 1?<p className="help is-danger">Digite o CPF e senha!</p>:<div></div>)}
                 {(this.state.dadosInvalidos === 2?<p className="help is-danger">CPF ou senha inválidos!</p>:<div></div>)}
                 <p>Ainda não possui cadastro?
-                  <Link to={"/Signup"}> Cadastro</Link>
+                  <Link to={"/signup"}> Cadastro</Link>
               </p>
               </form>
         

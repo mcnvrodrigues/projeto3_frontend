@@ -6,7 +6,7 @@ import Service from '../service';
 import { Redirect } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
 
-class Education extends Component {
+class Dependents extends Component {
     constructor(props){
         super(props);
         this.state = { 
@@ -20,25 +20,22 @@ class Education extends Component {
     
         if (this.state.redirect) {
           
-          return <Redirect to='/dependents' />
+          return <Redirect to='/profileform' />
         }
       }
 
-      chosenDegree = (opt) => {
+      dependents = (opt) => {
         switch(opt){
           case 'opt1':
-            return 'Sem instrução';
+            return 0;
           case 'opt2':
-            return 'Ensino Fundamental 1';
+            return 1;
           case 'opt3':
-            return 'Ensino Fundamental 2';
+            return 2;
           case 'opt4':
-            return 'Ensino Médio';
-
+            return 3;
           case 'opt5':
-            return 'Ensino Superior';
-          case 'opt6':
-            return 'Pós Graduação';
+            return 4;          
           default:
             return '';
         }
@@ -47,11 +44,11 @@ class Education extends Component {
       handleFormSubmit = (event) => {
         event.preventDefault(); 
         
-        let degree = this.chosenDegree(this.state.selectedOption);
+        let dep = this.dependents(this.state.selectedOption);
 
-        this.service.education(this.context.state.confirmationCode, degree)
+        this.service.dependents(this.context.state.confirmationCode, dep)
         .then( response => {
-                      
+            // this.context.getUser(response);
             this.setState({
               redirect: true
             });
@@ -84,11 +81,11 @@ class Education extends Component {
                   <form onSubmit={this.handleFormSubmit}>
 
                   <h1 className="title">
-                      <p>Qual o seu grau de</p>
-                      <p>escolaridade?</p>
+                      <p>Você tem dependentes?</p>
+                      
                   </h1>
 
-            <span className="tag is-danger">{this.state.selectedOption}</span>
+            
 
                 <hr></hr>
                    
@@ -99,7 +96,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt1" checked={this.state.selectedOption === 'opt1'} onChange={ e => this.handleChange(e)}/> Sem instrução
+                                        <input type="radio" value="opt1" checked={this.state.selectedOption === 'opt1'} onChange={ e => this.handleChange(e)}/> Não tenho dependentes
                                     </label>
                                 </div>
                             </div>
@@ -109,7 +106,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt2"  checked={this.state.selectedOption === 'opt2'} onChange={ e => this.handleChange(e)}/> Ensino Fundamental 1 (antigo primário)
+                                        <input type="radio" value="opt2"  checked={this.state.selectedOption === 'opt2'} onChange={ e => this.handleChange(e)}/> 1 dependente
                                     </label>
                                 </div>
                             </div>
@@ -119,7 +116,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt3" checked={this.state.selectedOption === 'opt3'} onChange={ e => this.handleChange(e)}/> Ensino Fundamental 2 (antigo ginásio)
+                                        <input type="radio" value="opt3" checked={this.state.selectedOption === 'opt3'} onChange={ e => this.handleChange(e)}/> 2 dependentes
                                     </label>
                                 </div>
                             </div>
@@ -129,7 +126,7 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt4" checked={this.state.selectedOption === 'opt4'} onChange={ e => this.handleChange(e)}/> Ensino Médio (antigo 2 grau)
+                                        <input type="radio" value="opt4" checked={this.state.selectedOption === 'opt4'} onChange={ e => this.handleChange(e)}/> 3 dependentes
                                     </label>
                                 </div>
                             </div>
@@ -139,21 +136,11 @@ class Education extends Component {
                             <div className="media-content">
                                 <div className="content">
                                     <label className="radio">
-                                        <input type="radio" value="opt5" checked={this.state.selectedOption === 'opt5'} onChange={ e => this.handleChange(e)}/> Ensino Superior
+                                        <input type="radio" value="opt5" checked={this.state.selectedOption === 'opt5'} onChange={ e => this.handleChange(e)}/> 4 ou mais dependentes
                                     </label>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="box"> 
-                            <div className="media-content">
-                                <div className="content">
-                                    <label className="radio">
-                                        <input type="radio" value="opt6" checked={this.state.selectedOption === 'opt6'} onChange={ e => this.handleChange(e)}/> Pós Graduação
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        </div>                       
 
                         <div>
 
@@ -183,5 +170,5 @@ class Education extends Component {
       }
 }
 
-Education.contextType = AppContext;
-export default Education;
+Dependents.contextType = AppContext;
+export default Dependents;
