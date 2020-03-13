@@ -74,6 +74,11 @@ class Service {
     .then(response => response.data);
   }
 
+  installment = (id) => {
+    return this.service.post('/installment', {id})
+    .then(response => response.data);
+  }
+
 }
 
 export default Service;
