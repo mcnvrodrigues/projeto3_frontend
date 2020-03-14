@@ -38,7 +38,7 @@ class Nav extends Component{
       <AppContext.Consumer>
         { context => (
         <React.Fragment>
-          <nav className='navbar' style={{"background-color":"#0494D4"}}>
+          <nav className='navbar' style={{"background-color":"#04549C"}}>
             <div className='brand-name container'>
               <Link to='/'><img src='/images/logo-new.png' alt='logo' className='logo'></img></Link>
             </div>
