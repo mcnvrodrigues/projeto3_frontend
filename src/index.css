@@ -205,6 +205,50 @@ code {
   width: 220px;
 }
 
+
+.credit-card{
+  /* margin-left: 20px; */
+  margin-bottom: 20px;
+  border-radius: 12px;
+  width: 400px;
+  height: 200px;
+}
+
+.logo-c{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo-c figure{
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.card-number{
+  display: flex;
+  justify-content: center;
+}
+
+.card-info{
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.owner{
+  margin-left: 25px;
+ 
+}
+
+.card-info span{
+  margin-right: 25px;
+}
+
+.icon-c{
+  font-size: 40px;
+  margin-left: 120px;
+  margin-bottom: 40px;
+}
+
 .partiners {
   display: flex;
   flex-direction: row;
