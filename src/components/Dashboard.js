@@ -4,6 +4,7 @@ import Restricted from './Restricted';
 import CreateInvestments from './CreateInvestments';
 import ConfirmationLoan from './ConfirmationLoan';
 import ConfirmationLoanMessage from './ConfirmationLoanMessage';
+import ConfirmationLoanMessageApproved from './ConfirmationLoanMessageApproved';
 import Loans from './Loans';
 import Loan from './Loan';
 import DashBoardContext from '../context/DashBoardContext';
@@ -159,6 +160,7 @@ import CreditCard from './CreditCard';
                             <Route exact path='/dashboard/loan-request' component={CreateInvestments}/> 
                             <Route exact path='/dashboard/confirmation-loan' component={ConfirmationLoan}/> 
                             <Route exact path='/dashboard/confirmationloanmessage' component={ConfirmationLoanMessage}/>
+                            <Route exact path='/dashboard/confirmationloanmessageapproved' component={ConfirmationLoanMessageApproved}/>
                             <Route exact path='/dashboard/loansrequested' component={LoansRequested}/>    
                             <Route exact path='/dashboard/investments' component={Investments}/>
                             <Route exact path='/dashboard/investment/:id' component={Investment}/>

@@ -347,3 +347,36 @@ iframe {
   width: 800px;
   margin-left: 230px;
 }
+
+.box-loan{
+  margin-top: 80px;
+  width: 600px;
+  margin-left: 300px;
+}
+
+
+.email-message{
+  font-size: 25px;
+  margin-top: 200px;
+}
+
+.form-password{
+  margin-top: 150px;
+}
+
+.education{
+  margin-top:60px;
+}
+
+.dependents{
+  margin-top: 70px;
+}
+
+.profileform{
+  margin-top: 70px
+}
+
+.payment{
+  width: 500px;
+  margin-left: 320px;
+}

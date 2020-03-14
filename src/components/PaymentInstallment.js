@@ -37,7 +37,7 @@ class PaymentInstallment extends Component {
 
                         this.state.install.install.map((parcela, i) => {
                             return <Link to={`/dashboard/payment/installment/${parcela._id}`} key={i} >
-                                <div className="box">
+                                <div className="box payment">
                                     <form>
                                         
                                         <div className='level'>
