@@ -380,3 +380,8 @@ iframe {
   width: 500px;
   margin-left: 320px;
 }
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+}

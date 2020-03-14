@@ -39,7 +39,7 @@ class Nav extends Component{
         { context => (
         <React.Fragment>
           <nav className='navbar' style={{"background-color":"#04549C"}}>
-            <div className='brand-name container'>
+            <div className='brand-name'>
               <Link to='/'><img src='/images/logo-new.png' alt='logo' className='logo'></img></Link>
             </div>
             {/* {(this.context.state.loggedInUser ? */}

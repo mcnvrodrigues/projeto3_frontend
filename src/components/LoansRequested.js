@@ -37,11 +37,9 @@ class LoansRequested extends Component {
           context => (
             <div className="container">
            
-
+            <p className='title is-4' style={{'color':'#060A4E'}}>Solicitados</p>
             <div className="loan-container">                
-                
                 <div className="cards-container">
-
                 {(this.state.loansreq ? 
                   
                   this.state.loansreq.loans.map((loan, i) => {
@@ -58,6 +56,7 @@ class LoansRequested extends Component {
                 
             
                 </div>
+                
             </div>
         </div>
           )

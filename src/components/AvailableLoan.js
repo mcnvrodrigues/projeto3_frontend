@@ -7,12 +7,15 @@ class AvailableLoan extends Component {
     return (
       <AppContext.Consumer>
           {context => (
+            <React.Fragment>
+            <br/>
+            
               <div className="card loan">
-             
+            
               <div className="card-content">
+              
                 <div className="media">
                   <div className="media-content">
-                    <p className='title is-4' style={{'color':'#060A4E'}}>Investimentos</p>
                     <p className='title is-2' style={{'color':'#FCBC2B'}}>R$ {this.props.loanp.amount}</p>
                   </div>
                   
@@ -96,6 +99,7 @@ class AvailableLoan extends Component {
 
               </div>
             </div>
+            </React.Fragment>
           )}
       </AppContext.Consumer>
     );
