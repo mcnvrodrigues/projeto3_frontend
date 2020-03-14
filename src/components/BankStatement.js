@@ -45,7 +45,7 @@ class BankStatement extends Component {
                                         
                                         <h5 className="title is-5"><i className="far fa-calendar-alt"></i> {statem.createdAt}</h5>
                                         <span className="tag is-light">{statem.code}</span>
-                                        <button class="button is-info">{statem.amount}</button>
+                                        <button className="button is-info">{statem.amount}</button>
                                         </div>
                                     </div>
                                 </div>
