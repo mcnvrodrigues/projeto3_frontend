@@ -94,7 +94,7 @@ class Login extends Component {
             
             <div className="level">
 
-            <div className="level-item">
+            <div className="level-item login-form">
             
               <form onSubmit={this.handleFormSubmit}>
                 {/* <label>Username:</label> */}
