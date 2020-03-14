@@ -126,7 +126,7 @@ import BankStatement from './BankStatement';
                             <ul className="menu-list">
                                 {/* <li><a>Team Settings</a></li> */}
                                 <li>
-                                <Link to={"/dashboard/loan-request"} className="is-active">Empréstimo</Link>
+                                <Link to={"/dashboard/loan-request"} >Empréstimo</Link>
                                 <ul>
                                     <li><Link to={"/dashboard/loan-request"}>Quero Empréstimo</Link></li>
                                     <li><Link to={"/dashboard/loans"}>Quero Investir</Link></li>
@@ -140,7 +140,7 @@ import BankStatement from './BankStatement';
                             <ul className="menu-list">
                                 <li><Link to={"/dashboard"}>Pagamentos</Link></li>
                                 <li><Link to={"/dashboard/statements"}>Extrato</Link></li>
-                                <li><Link to={"/dashboard"}>Saldo</Link></li>
+                                {/* <li><Link to={"/dashboard"}>Saldo</Link></li> */}
                             </ul>
                         </aside>
                         
