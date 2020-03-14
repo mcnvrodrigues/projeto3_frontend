@@ -28,7 +28,7 @@ class CreditCard extends Component {
     
         if (this.state.redirect) {
           
-          return <Redirect to='/dashboard/confirmationloanmessage'/>
+          return <Redirect to='/dashboard/confirmationloanmessagecreditcard'/>
         }
       }
 
