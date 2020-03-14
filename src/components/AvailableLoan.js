@@ -11,11 +11,11 @@ class AvailableLoan extends Component {
              
               <div className="card-content">
                 <div className="media">
-                  <div className="media-left">
-                    <figure className="image is-64x64">
-                      <img className="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder"/>
-                    </figure>
+                  <div className="media-content">
+                    <p className='title is-4' style={{'color':'#060A4E'}}>Investimentos</p>
+                    <p className='title is-2' style={{'color':'#FCBC2B'}}>R$ {this.props.loanp.amount}</p>
                   </div>
+                  
                   <div className="media-content">
                     <div >
                       <p className="title is-6">{(this.props.loanp.claimantName).substring(0, (this.props.loanp.claimantName).indexOf(" "))}</p>
@@ -29,14 +29,14 @@ class AvailableLoan extends Component {
 
                     {/* <div className="card-content line-content">
                       <div className="media"> */}
-                        <div className="media-left">
+                        {/* <div className="media-left">
                             <i className="fas fa-hand-holding-usd"></i>
                         </div>
 
                         <div className="media-content">
                         <p className='subtitle is-6'>Valor</p>
                             <p className='title is-6' style={{'color':'green'}}>R$ {this.props.loanp.amount}</p>
-                        </div>
+                        </div> */}
                       {/* </div>
                     </div> */}
 
