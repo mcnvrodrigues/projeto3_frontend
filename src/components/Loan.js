@@ -20,7 +20,7 @@ class Loan extends Component {
     
         if (this.state.redirect) {
           
-          return <Redirect to='/dashboard/confirmationloanmessage'/>
+          return <Redirect to='/dashboard/confirmationloanmessageapproved'/>
         }
       }
 
@@ -67,7 +67,7 @@ class Loan extends Component {
                         <h3 className="title is-3" style={{'color': 'white'}}>Emprestimo</h3>         
 
                                             
-                        <div className="box">
+                        <div className="box box-loan">
 
                             {(this.state.loanreq ?
                                 <form onSubmit={this.handleFormSubmit}>
