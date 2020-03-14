@@ -17,6 +17,7 @@ import Approved from './Approved';
 import BankStatement from './BankStatement';
 import Payment from './Payment';
 import PaymentInstallment from './PaymentInstallment';
+import CreditCard from './CreditCard';
 
  class Dashboard extends Component {
 
@@ -165,6 +166,7 @@ import PaymentInstallment from './PaymentInstallment';
                             <Route exact path='/dashboard/statements' component={BankStatement}/> 
                             <Route exact path='/dashboard/payment' component={Payment}/> 
                             <Route exact path='/dashboard/payment/:id' component={PaymentInstallment}/> 
+                            <Route exact path='/dashboard/payment/installment/:id' component={CreditCard}/> 
                             <Route exact path='/dashboard/loansrequested/:id' component={LoanRequested}/>                   
                         {/* </Switch> */}
                         </div>

@@ -79,6 +79,16 @@ class Service {
     .then(response => response.data);
   }
 
+  singleInstallment = (id) => {
+    return this.service.post('/singleinstallment', {id})
+    .then(response => response.data);
+  }
+
+  paymentConfirmation = (id, amount, card_number, card_holder_name, card_expiration_date, card_cvv) => {
+    return this.service.post('/paymentconfirmation', {id, amount, card_number, card_holder_name, card_expiration_date, card_cvv})
+    .then(response => response.data);
+  }
+
 }
 
 export default Service;
