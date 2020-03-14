@@ -54,7 +54,7 @@ class CreditCard extends Component {
         const card_holder_name = this.state.owner;
         
         const card_cvv = this.state.cvv;
-        const cardExpiration = this.state.validade.substr(0,2) + this.state.validade.substr(3,6);
+        const cardExpiration = this.state.validade.substr(0,2) + this.state.validade.substr(5,6);
         
         this.service.paymentConfirmation(id, amount, card_number, card_holder_name, cardExpiration, card_cvv)
         .then(response => {
