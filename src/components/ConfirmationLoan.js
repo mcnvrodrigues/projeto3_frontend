@@ -63,14 +63,14 @@ class ConfirmationLoan extends Component{
                 context => (
                     <React.Fragment>
                         {this.renderRedirect()}
-                    <div className="container backg">
+                    <div className="container">
 
-                    <h3 className="title is-3" style={{'color': 'white'}}>Tudo certo, Tangamandapiano!</h3>
-
-                    <h6 className="subtitle  is-6" style={{'color': 'white'}}>Você já pode avaliar as condições e finalizar o seu pedido de empréstimo:</h6>
-
+                    <div className='loan-form has-background-info'>
+                      <h3 className="title is-3 hearder-investiments has-text-white-ter">Tudo certo!</h3>
+                      <h6 className="subtitle  is-6 hearder-investiments has-text-white-ter">Você já pode avaliar as condições e finalizar o seu pedido de empréstimo:</h6>
+                    </div>
                         
-                        <div className="box">
+                        <div className="box box-form">
 
                         <form onSubmit={this.handleFormSubmit}>
                         <div className="level">

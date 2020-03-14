@@ -81,7 +81,7 @@ class Education extends Component {
 
                     
                 
-                  <form onSubmit={this.handleFormSubmit}>
+                  <form className='education' onSubmit={this.handleFormSubmit}>
 
                   <h1 className="title">
                       <p>Qual o seu grau de</p>

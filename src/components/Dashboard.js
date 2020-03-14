@@ -4,6 +4,8 @@ import Restricted from './Restricted';
 import CreateInvestments from './CreateInvestments';
 import ConfirmationLoan from './ConfirmationLoan';
 import ConfirmationLoanMessage from './ConfirmationLoanMessage';
+import ConfirmationLoanMessageApproved from './ConfirmationLoanMessageApproved';
+import ConfirmationLoanMessageCreditCard from './ConfirmationLoanMessageCreditCard';
 import Loans from './Loans';
 import Loan from './Loan';
 import DashBoardContext from '../context/DashBoardContext';
@@ -129,7 +131,7 @@ import CreditCard from './CreditCard';
                             <ul className="menu-list">
                                 {/* <li><a>Team Settings</a></li> */}
                                 <li>
-                                <Link to={"/dashboard/loan-request"} className="is-active">Empréstimo</Link>
+                                <Link to={"/dashboard/loan-request"} >Empréstimo</Link>
                                 <ul>
                                     <li><Link to={"/dashboard/loan-request"}>Quero Empréstimo</Link></li>
                                     <li><Link to={"/dashboard/loans"}>Quero Investir</Link></li>
@@ -143,7 +145,7 @@ import CreditCard from './CreditCard';
                             <ul className="menu-list">
                                 <li><Link to={"/dashboard/payment"}>Pagamentos</Link></li>
                                 <li><Link to={"/dashboard/statements"}>Extrato</Link></li>
-                                <li><Link to={"/dashboard"}>Saldo</Link></li>
+                                {/* <li><Link to={"/dashboard"}>Saldo</Link></li> */}
                             </ul>
                         </aside>
                         
@@ -159,6 +161,8 @@ import CreditCard from './CreditCard';
                             <Route exact path='/dashboard/loan-request' component={CreateInvestments}/> 
                             <Route exact path='/dashboard/confirmation-loan' component={ConfirmationLoan}/> 
                             <Route exact path='/dashboard/confirmationloanmessage' component={ConfirmationLoanMessage}/>
+                            <Route exact path='/dashboard/confirmationloanmessageapproved' component={ConfirmationLoanMessageApproved}/>
+                            <Route exact path='/dashboard/confirmationloanmessagecreditcard' component={ConfirmationLoanMessageCreditCard}/>
                             <Route exact path='/dashboard/loansrequested' component={LoansRequested}/>    
                             <Route exact path='/dashboard/investments' component={Investments}/>
                             <Route exact path='/dashboard/investment/:id' component={Investment}/>

@@ -72,7 +72,7 @@ class Dependents extends Component {
               <div>
                 {this.renderRedirect()}
               <div className="container">
-                <div className="level">
+                <div className="level dependents">
     
                 <div className="level-item">
 

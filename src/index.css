@@ -1,15 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Muli|Nanum+Gothic&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.background {
+  background-image: url("https://cdn.dribbble.com/users/1365253/screenshots/5836334/responsive-payments-illustration-mobile-nc-01-01-01-01.png");
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  padding-top: 10px;
+}
+
+.home-title {
+  padding-top: 250px;
+  font-family: "Nanum Gothic";
+  font-size: 120px;
+  text-shadow: 1px 1px 2px #f1f4f7;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+.home-text {
+  font-family: "Muli";
+  font-size: 50px;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.info-box {
+  margin-top: 180px;
 }
 
 .dropbtn {
@@ -47,7 +78,9 @@ code {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -68,37 +101,35 @@ code {
   cursor: pointer;
 } */
 
-.loan{
-  border: 1px solid rgba(214, 16, 16, 0.836);
-    width: 250px;
-    height: 310px;
-    margin: 10px;
+.loan {
+  /* border: 1px solid rgba(214, 16, 16, 0.836);
+  width: 250px;
+  height: 310px;
+  margin: 10px; */
+  width: 450px;
 }
 
-.cardLine{
+.cardLine {
   /* border: 1px solid black; */
-  
+
   width: 210;
   padding-bottom: 10px;
   background-color: rgba(35, 35, 131, 0.192);
   margin-bottom: 5px;
-  
 }
 
-
-.line-content{
+.line-content {
   /* border: 1px solid black; */
-  
+
   height: 28px;
-  
 }
 
 .loan-container {
   display: flex;
   flex-wrap: wrap;
-  margin:0;
-  margin-top:40px;
-  margin-bottom: 70px 
+  margin: 0;
+  margin-top: 40px;
+  margin-bottom: 70px;
 }
 
 .cards-container {
@@ -108,45 +139,48 @@ code {
   flex-wrap: wrap;
   /* border: 1px solid black; */
   margin: auto;
-  width: 1100px; 
-  height: auto; 
+  width: 1100px;
+  height: auto;
 }
 
-.esp-bottom{
+.esp-bottom {
   margin-bottom: 30px;
 }
 
-.esp-right{
+.esp-right {
   margin-top: 7px;
   width: 112px;
   margin-right: 30px;
 }
 
-.drop-space{
+.drop-space {
   margin-right: 10px;
   margin-top: 7px;
 }
 
-.logo{
-  
+.logo {
   margin-top: 12px;
   width: 250px;
+  margin-right: 50px;
 }
 
-.backg{
-  background-color: #3273dc;
-}
-
-.loan-card{
-  width: 90%;
-}
-
-.card-width{
+.card-width {
   width: 450px;
 }
 
-.accept-button{
+.accept-button {
   justify-content: right;
+}
+
+.investiments-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.accept-button {
+  font-family: 'Nanum Gothic';
+  display: flex;
+  justify-content: flex-end;
 }
 
 .investments-content {
@@ -155,19 +189,22 @@ code {
 }
 
 .accept-button {
+  font-family: "Nanum Gothic";
   display: flex;
   justify-content: flex-end;
 }
 
-.quotes .value{
+.quotes .value {
   display: flex;
   flex-direction: column;
-  color: greenyellow; 
+  color: greenyellow;
 }
 
-.button-width{
+.button-width {
+  margin-top: 8px;
   width: 220px;
 }
+
 
 .credit-card{
   /* margin-left: 20px; */
@@ -210,4 +247,136 @@ code {
   font-size: 40px;
   margin-left: 120px;
   margin-bottom: 40px;
+}
+
+.partiners {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.folha {
+  height: 35px;
+  width: 160px;
+}
+
+.monitor {
+  height: 40px;
+  width: 110px;
+}
+
+.estadao {
+  height: 40px;
+  width: 150px;
+}
+
+iframe {
+  height: 300px;
+  width: 500px;
+}
+
+.map {
+  margin-top: 80px;
+}
+
+.hearder-investiments {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "Nanum Gothic";
+}
+
+.loan-form {
+  margin-top: 100px;
+  margin-right: 200px;
+  margin-left: 200px;
+  border-radius: 10px;
+}
+
+.box-form {
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+.login-form {
+  margin-top: 160px;
+}
+
+.signup-form {
+  margin-top: 160px;
+}
+
+.confloanmessage {
+  margin-top: 200px;
+  width: 500px;
+  height: 250px;
+  margin-left: 350px;
+}
+
+.confloanmessage > h3{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+}
+
+.confloanmessage > p{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.loanrequested{
+  margin-top: 100px;
+  width: 800px;
+  margin-left: 180px;
+}
+
+.btnstatement{
+  margin-left: 130px;
+}
+
+.tag{
+  margin-top: 6px;
+}
+
+.profile{
+  margin-top: 150px;
+  height: 400px;
+  width: 800px;
+  margin-left: 230px;
+}
+
+.box-loan{
+  margin-top: 80px;
+  width: 600px;
+  margin-left: 300px;
+}
+
+
+.email-message{
+  font-size: 25px;
+  margin-top: 200px;
+}
+
+.form-password{
+  margin-top: 150px;
+}
+
+.education{
+  margin-top:60px;
+}
+
+.dependents{
+  margin-top: 70px;
+}
+
+.profileform{
+  margin-top: 70px
+}
+
+.payment{
+  width: 500px;
+  margin-left: 320px;
 }
