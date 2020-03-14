@@ -66,7 +66,7 @@ class ConfirmationLoan extends Component{
                     <div className="container">
 
                     <div className='loan-form has-background-info'>
-                      <h3 className="title is-3 hearder-investiments has-text-white-ter">Tudo certo, Tangamandapiano!</h3>
+                      <h3 className="title is-3 hearder-investiments has-text-white-ter">Tudo certo!</h3>
                       <h6 className="subtitle  is-6 hearder-investiments has-text-white-ter">Você já pode avaliar as condições e finalizar o seu pedido de empréstimo:</h6>
                     </div>
                         

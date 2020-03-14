@@ -41,12 +41,14 @@ class BankStatement extends Component {
                             return <Link to={`/dashboard/statements/${statem._id}`} key={i} > 
                                 <div className="level">
                                     <div className="level-item">
-                                        <div className="box">                      
-                                        
+                                        <div className="box statements">                                                     
                                         <h5 className="title is-5"><i className="far fa-calendar-alt"></i> {statem.createdAt}</h5>
-                                        <span className="tag is-light">{statem.code}</span>
-                                        <button className="button is-info">{statem.amount}</button>
+                                        <br/>
+                                        <span className="tag is-warning">{statem.code}</span>
+                                        <button class="button is-info btnstatement">{statem.amount}</button>
                                         </div>
+                                        <br/>
+                                        <br/>
                                     </div>
                                 </div>
                             </Link>

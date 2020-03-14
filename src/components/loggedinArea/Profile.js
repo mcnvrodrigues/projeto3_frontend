@@ -6,7 +6,7 @@ class Profile extends Component{
     return(
       <React.Fragment>
           <div class="container">
-            <div class="card">
+            <div class="card profile">
               <div class="card-content">
                 <div class="media">
                   <div class="media-left">
