@@ -388,4 +388,9 @@ iframe {
 .cardmax{
   width: 640px;
   height: 480;
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+
 }
