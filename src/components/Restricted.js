@@ -100,7 +100,7 @@ class Restricted extends Component {
                 </li>
               </ul>
 
-          <div><b>Saldo </b> R$ {(context.state.loggedInUser? context.state.loggedInUser.balance.toFixed(2):'0.00')}</div>
+          <div><b>Saldo </b> R$ {(context.state.loggedInUser.balance ? context.state.loggedInUser.balance.toFixed(2):'0.00')}</div>
             </div>
 
             <div className="media-content" style={{'display':(this.state.selectedOption === 'opt1'? true:'none')}}>
