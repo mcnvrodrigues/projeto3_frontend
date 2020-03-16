@@ -15,6 +15,10 @@ class LoansRequested extends Component {
     this.service = new Service();
   }
 
+  componentDidUpdate(){
+    console.log('loansrequested update');
+  }
+
   componentDidMount(){
     this.service.myloans(this.context.state.loggedInUser._id)
     .then(response => {

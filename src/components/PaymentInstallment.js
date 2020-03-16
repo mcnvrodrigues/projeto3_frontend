@@ -59,6 +59,7 @@ class PaymentInstallment extends Component {
                                             <h6 className="subtitle  is-6">Status</h6>
                                             <p>{parcela.status}</p>
                                         </div>
+                                        
                                             
                                     </form>
                                 </div>

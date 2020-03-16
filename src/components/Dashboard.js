@@ -75,8 +75,6 @@ import CreditCard from './CreditCard';
 
         
     }
-    
-     
 
   render() {
 
@@ -105,7 +103,7 @@ import CreditCard from './CreditCard';
                             <ul className="menu-list">
                                 
                                 <li>
-                                    <Link to={"/dashboard"}>
+                                    <Link to={"/dashboard"} >
                                         <span className="icon is-small">
                                             <i className="fas fa-home" aria-hidden="true"></i>
                                         </span>
@@ -117,8 +115,8 @@ import CreditCard from './CreditCard';
                                 <Link to={"/dashboard"}>Meus Empréstimos</Link>
                                 <ul>
                                     <li><Link to={"/dashboard/loansrequested"}>Solicitados</Link></li>
-                                    <li><Link to={"/dashboard/investments"}>Investimentos</Link></li>
-                                    <li><Link to={"/dashboard/approved"}>Aprovados</Link></li>
+                                    <li><Link to={"/dashboard/investments"} >Investimentos</Link></li>
+                                    <li><Link to={"/dashboard/approved"} >Aprovados</Link></li>
                                     {/* <li><a>Add a member</a></li> */}
                                 </ul>
                                 </li>

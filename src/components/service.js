@@ -89,6 +89,16 @@ class Service {
     .then(response => response.data);
   }
 
+  messagesreq = (id) => {
+    return this.service.post('/messagesreq', {id})
+    .then(response => response.data);
+  }
+
+  messagesres = (id) => {
+    return this.service.post('/messagesres', {id})
+    .then(response => response.data);
+  }
+
 }
 
 export default Service;
