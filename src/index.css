@@ -380,3 +380,12 @@ iframe {
   width: 500px;
   margin-left: 320px;
 }
+
+.conftab {  
+  height: 250px;
+}
+
+.cardmax{
+  width: 640px;
+  height: 480;
+}

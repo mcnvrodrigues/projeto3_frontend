@@ -87,6 +87,15 @@ class Nav extends Component{
                   <span className="icon is-small">
                     <i className="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
+                  
+                  {(this.context.state.messages.length !== 0?
+                    <span className="icon is-small">
+                      <i className="fas fa-bell" aria-hidden="true"></i>
+                    </span>
+                  :
+                  <div></div>
+                  )}
+                  
                 </button>
               </div>
               <div className="dropdown-menu" id="dropdown-menu" role="menu">
@@ -104,6 +113,27 @@ class Nav extends Component{
                     Transferência de custódia
                   </a> */}
                   <hr className="dropdown-divider"/>
+
+                  {(this.context.state.messages.length !== 0?
+                    
+
+                    <Link to='/messages' className="dropdown-item" >
+                      
+                    <span className="icon is-small">
+                      <i className="fas fa-circle" aria-hidden="true"></i>
+                    </span>
+                    <span> Mensagens</span>
+
+                    </Link>
+                  :
+                  <Link to='/messages' className="dropdown-item" >
+
+                    <span> Mensagens</span>
+
+                    </Link>
+                  )}
+
+                  
                   <a href="#" className="dropdown-item">
                     Senha
                   </a>
