@@ -26,16 +26,17 @@ class Messages extends Component{
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-
-    this.context.state.messages.forEach(message => {
+    
+    if(this.context.state.messages){
+      this.context.state.messages.forEach(message => {
         this.service.messagesres(message._id)
         .then(() => {
             console.log('Mensagem lida');
         })
     });
+      
+    }
 
-   
-    
     this.setState({
         redirect: true
     })
