@@ -34,7 +34,7 @@ class LoanRequested extends Component {
                 <h3 className="title is-3" style={{'color': 'white'}}>Emprestimo</h3>         
 
                                     
-                <div className="box">
+                <div className="box loanrequested">
 
                     {(this.state.loanreq ?
                         <form>

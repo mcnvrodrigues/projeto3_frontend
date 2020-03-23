@@ -4,6 +4,8 @@ import Restricted from './Restricted';
 import CreateInvestments from './CreateInvestments';
 import ConfirmationLoan from './ConfirmationLoan';
 import ConfirmationLoanMessage from './ConfirmationLoanMessage';
+import ConfirmationLoanMessageApproved from './ConfirmationLoanMessageApproved';
+import ConfirmationLoanMessageCreditCard from './ConfirmationLoanMessageCreditCard';
 import Loans from './Loans';
 import Loan from './Loan';
 import DashBoardContext from '../context/DashBoardContext';
@@ -15,6 +17,9 @@ import Investments from './Investments';
 import Investment from './Investment';
 import Approved from './Approved';
 import BankStatement from './BankStatement';
+import Payment from './Payment';
+import PaymentInstallment from './PaymentInstallment';
+import CreditCard from './CreditCard';
 
  class Dashboard extends Component {
 
@@ -70,8 +75,6 @@ import BankStatement from './BankStatement';
 
         
     }
-    
-     
 
   render() {
 
@@ -100,7 +103,7 @@ import BankStatement from './BankStatement';
                             <ul className="menu-list">
                                 
                                 <li>
-                                    <Link to={"/dashboard"}>
+                                    <Link to={"/dashboard"} >
                                         <span className="icon is-small">
                                             <i className="fas fa-home" aria-hidden="true"></i>
                                         </span>
@@ -112,8 +115,8 @@ import BankStatement from './BankStatement';
                                 <Link to={"/dashboard"}>Meus Empréstimos</Link>
                                 <ul>
                                     <li><Link to={"/dashboard/loansrequested"}>Solicitados</Link></li>
-                                    <li><Link to={"/dashboard/investments"}>Investimentos</Link></li>
-                                    <li><Link to={"/dashboard/approved"}>Aprovados</Link></li>
+                                    <li><Link to={"/dashboard/investments"} >Investimentos</Link></li>
+                                    <li><Link to={"/dashboard/approved"} >Aprovados</Link></li>
                                     {/* <li><a>Add a member</a></li> */}
                                 </ul>
                                 </li>
@@ -126,7 +129,7 @@ import BankStatement from './BankStatement';
                             <ul className="menu-list">
                                 {/* <li><a>Team Settings</a></li> */}
                                 <li>
-                                <Link to={"/dashboard/loan-request"} className="is-active">Empréstimo</Link>
+                                <Link to={"/dashboard/loan-request"} >Empréstimo</Link>
                                 <ul>
                                     <li><Link to={"/dashboard/loan-request"}>Quero Empréstimo</Link></li>
                                     <li><Link to={"/dashboard/loans"}>Quero Investir</Link></li>
@@ -138,9 +141,9 @@ import BankStatement from './BankStatement';
                             </ul>
                             
                             <ul className="menu-list">
-                                <li><Link to={"/dashboard"}>Pagamentos</Link></li>
+                                <li><Link to={"/dashboard/payment"}>Pagamentos</Link></li>
                                 <li><Link to={"/dashboard/statements"}>Extrato</Link></li>
-                                <li><Link to={"/dashboard"}>Saldo</Link></li>
+                                {/* <li><Link to={"/dashboard"}>Saldo</Link></li> */}
                             </ul>
                         </aside>
                         
@@ -156,11 +159,16 @@ import BankStatement from './BankStatement';
                             <Route exact path='/dashboard/loan-request' component={CreateInvestments}/> 
                             <Route exact path='/dashboard/confirmation-loan' component={ConfirmationLoan}/> 
                             <Route exact path='/dashboard/confirmationloanmessage' component={ConfirmationLoanMessage}/>
+                            <Route exact path='/dashboard/confirmationloanmessageapproved' component={ConfirmationLoanMessageApproved}/>
+                            <Route exact path='/dashboard/confirmationloanmessagecreditcard' component={ConfirmationLoanMessageCreditCard}/>
                             <Route exact path='/dashboard/loansrequested' component={LoansRequested}/>    
                             <Route exact path='/dashboard/investments' component={Investments}/>
                             <Route exact path='/dashboard/investment/:id' component={Investment}/>
                             <Route exact path='/dashboard/approved' component={Approved}/>   
                             <Route exact path='/dashboard/statements' component={BankStatement}/> 
+                            <Route exact path='/dashboard/payment' component={Payment}/> 
+                            <Route exact path='/dashboard/payment/:id' component={PaymentInstallment}/> 
+                            <Route exact path='/dashboard/payment/installment/:id' component={CreditCard}/> 
                             <Route exact path='/dashboard/loansrequested/:id' component={LoanRequested}/>                   
                         {/* </Switch> */}
                         </div>

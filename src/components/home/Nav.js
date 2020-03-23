@@ -38,9 +38,9 @@ class Nav extends Component{
       <AppContext.Consumer>
         { context => (
         <React.Fragment>
-          <nav className='navbar is-white'>
-            <div className='brand-name container'>
-              <Link to='/'><img src='/images/logo.png' alt='logo' className='logo'></img></Link>
+          <nav className='navbar' style={{"background-color":"#04549C"}}>
+            <div className='brand-name'>
+              <Link to='/'><img src='/images/logo-new.png' alt='logo' className='logo'></img></Link>
             </div>
             {/* {(this.context.state.loggedInUser ? */}
            
@@ -82,11 +82,20 @@ class Nav extends Component{
             {/* ------------------------- DROPDOWN MENU ------------------------- */}
             <div className="dropdown is-active drop-space">
               <div className="dropdown-trigger">
-                <button className="button button-width" aria-haspopup="true" aria-controls="dropdown-menu">
+                <button className="button  button-width" aria-haspopup="true" aria-controls="dropdown-menu">
                   <span>Olá, {(this.state.loggedInUser.nome).substring(0, (this.state.loggedInUser.nome).indexOf(" "))}</span>
                   <span className="icon is-small">
                     <i className="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
+                  
+                  {(this.context.state.messages.length !== 0?
+                    <span className="icon is-small">
+                      <i className="fas fa-bell" aria-hidden="true"></i>
+                    </span>
+                  :
+                  <div></div>
+                  )}
+                  
                 </button>
               </div>
               <div className="dropdown-menu" id="dropdown-menu" role="menu">
@@ -97,19 +106,40 @@ class Nav extends Component{
                   <Link to='/dashboard' className="dropdown-item">
                     Área Exclusiva
                   </Link>
-                  <a href="#" className="dropdown-item is-active">
+                  {/* <a href="#" className="dropdown-item is-active">
                     Adesão de contratos
                   </a>
                   <a href="#" className="dropdown-item">
                     Transferência de custódia
-                  </a>
+                  </a> */}
                   <hr className="dropdown-divider"/>
+
+                  {(this.context.state.messages.length !== 0?
+                    
+
+                    <Link to='/messages' className="dropdown-item" >
+                      
+                    <span className="icon is-small">
+                      <i className="fas fa-circle" aria-hidden="true"></i>
+                    </span>
+                    <span> Mensagens</span>
+
+                    </Link>
+                  :
+                  <Link to='/messages' className="dropdown-item" >
+
+                    <span> Mensagens</span>
+
+                    </Link>
+                  )}
+
+                  
                   <a href="#" className="dropdown-item">
                     Senha
                   </a>
-                  <a href="#" className="dropdown-item">
+                  {/* <a href="#" className="dropdown-item">
                     Assinatura Eletrônica
-                  </a>
+                  </a> */}
                   {/* <a className="dropdown-item" onClick={() => this.logoutUser()}> */}
                   <Link to='/' className="dropdown-item" onClick={() => this.logoutUser()}>
                     <span className="icon is-small">

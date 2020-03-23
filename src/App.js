@@ -19,10 +19,12 @@ import ProtectedRoute from './components/auth/protected-route';
 import Confirmation from './components/auth/Confirmation';
 import EmailPage from './components/EmailPage';
 import AuthService from './components/auth/auth-service';
+import Service from './components/service';
 import Education from './components/questions/Education';
 import Dependents from './components/questions/Dependents';
 import Profile from './components/loggedinArea/Profile';
 import ProfileForm from './components/ProfileForm';
+import Messages from './components/Messages';
 // import AvailableLoan from './components/AvailableLoan';
 
 import Dashboard from './components/Dashboard'
@@ -33,9 +35,11 @@ class App extends Component {
     super(props)
     this.state = { 
       loggedInUser: null,
-      confirmationCode: ''
+      confirmationCode: '',
+      messages: ''
     };
     this.service = new AuthService();
+    this.generalService = new Service();
   }
 
   fetchUser(){
@@ -66,6 +70,24 @@ class App extends Component {
     this.setState({
       confirmationCode: code
     })
+  }
+
+  componentDidUpdate(){
+    if(this.state.loggedInUser){
+      this.generalService.messagesreq(this.state.loggedInUser._id)
+      .then(message => {        
+
+        console.log('Message: ', message);
+        
+        this.setState({
+          
+          messages: message.msg
+        })
+      })
+    }else{
+      console.log('Usuario não logado')
+    }
+    
   }
 
   render() {
@@ -167,7 +189,8 @@ class App extends Component {
               <Route exact path='/dependents' component={Dependents}/>
               <Route exact path='/profileform' component={ProfileForm}/>
               <ProtectedRoute exact path='/profile' user={this.state.loggedInUser} component={() => <Profile />}/>    
-              <ProtectedRoute path='/dashboard' user={this.state.loggedInUser} component={Dashboard} />        
+              <ProtectedRoute path='/dashboard' user={this.state.loggedInUser} component={Dashboard} /> 
+              <ProtectedRoute exact path='/messages' user={this.state.loggedInUser} component={Messages}/>    
               <Route exact path='/:confirmation' component={Confirmation}/>    
 
             </Switch>

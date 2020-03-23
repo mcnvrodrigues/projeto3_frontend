@@ -5,7 +5,7 @@ import Cards from './loggedinArea/Cards';
 import { Link, Redirect } from 'react-router-dom';
 import AvailableLoan from './AvailableLoan';
 
-class LoansRequested extends Component {
+class Payment extends Component {
   constructor(props){
     super(props);
     this.state = { 
@@ -15,17 +15,13 @@ class LoansRequested extends Component {
     this.service = new Service();
   }
 
-  componentDidUpdate(){
-    console.log('loansrequested update');
-  }
-
   componentDidMount(){
-    this.service.myloans(this.context.state.loggedInUser._id)
+    this.service.loansApproved(this.context.state.loggedInUser._id)
     .then(response => {
       this.setState({
         loansreq: response
       })
-      console.log(response);
+      console.log('Payment >>> ', response);
     })
     .catch(err => {
       console.log(err);
@@ -41,15 +37,18 @@ class LoansRequested extends Component {
           context => (
             <div className="container">
            
-            <p className='title is-4' style={{'color':'#060A4E'}}>Solicitados</p>
+            <p className='title is-4' style={{'color':'#060A4E'}}>Pagamentos</p>
+
             <div className="loan-container">                
+                
                 <div className="cards-container">
+
                 {(this.state.loansreq ? 
                   
                   this.state.loansreq.loans.map((loan, i) => {
-                    return <Link to={`/dashboard/loansrequested/${loan._id}`} key={i} >                       
+                    return <Link to={`/dashboard/payment/${loan._id}`} key={i} >                       
                         <AvailableLoan loanp={loan} user={context.state.loggedInUser} />
-                        {console.log('emprestimos >> ', this.state.loansreq[0])}
+                        
                     </Link>
                   })
                   
@@ -60,7 +59,6 @@ class LoansRequested extends Component {
                 
             
                 </div>
-                
             </div>
         </div>
           )
@@ -71,5 +69,5 @@ class LoansRequested extends Component {
   }
 }
 
-LoansRequested.contextType = AppContext;
-export default LoansRequested;
+Payment.contextType = AppContext;
+export default Payment;

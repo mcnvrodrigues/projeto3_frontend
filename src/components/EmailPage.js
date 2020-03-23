@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class EmailPage extends Component {
   render() {
     return (
-      <div> Para continuar o cadastro favor abrir email </div>
+      <div className='email-message'> Para continuar o cadastro favor abrir email </div>
     );
   }
 }
