@@ -31,18 +31,25 @@ import CreditCard from './CreditCard';
                 amount: 100,
                 installments: 1,      
                 dueDate: 1,
-                rate: 2.81,
+                rate: 1.19,
                 iof: 43.56,
-                cet: 4.63,
+                cet: 2.63,
                 intallmentAmount: 0,
                 total:0
-            }          
+            },
+            optionSelected: 1          
         };
         this.service = new Service();
     }
 
     componentDidMount(){
         console.log('dashboard props >>>', this.props);
+    }
+
+    menu = (opt) => {
+        this.setState({
+            optionSelected: opt
+        })
     }
 
     requestLoan = () => {
@@ -88,18 +95,20 @@ import CreditCard from './CreditCard';
         <AppContext.Consumer>
             {
                 context => (
+                
                     <DashBoardContext.Provider value = {contextValues}> 
            <div className="card-content">
+           
                 <div className="media">
                 <Router>
                 {/*     <h1>Nome >>> {this.context.state.loggedInUser.cpf}</h1> */}
                     {/* --------------------- menu ---------------------  */}
                     <div className="media-left">
-                        
+                    
                         <aside className="menu" >
-                            <p className="menu-label">
+                            {/* <p className="menu-label">
                                 Geral
-                            </p>
+                            </p> */}
                             <ul className="menu-list">
                                 
                                 <li>
@@ -111,31 +120,31 @@ import CreditCard from './CreditCard';
                                     </Link>
                                 </li>
 
-                                <li>
-                                <Link to={"/dashboard"}>Meus Empréstimos</Link>
-                                <ul>
+                                {/* <li> */}
+                                {/* <Link to={"/dashboard"}>Meus Empréstimos</Link> */}
+                                {/* <ul> */}
                                     <li><Link to={"/dashboard/loansrequested"}>Solicitados</Link></li>
                                     <li><Link to={"/dashboard/investments"} >Investimentos</Link></li>
                                     <li><Link to={"/dashboard/approved"} >Aprovados</Link></li>
                                     {/* <li><a>Add a member</a></li> */}
-                                </ul>
-                                </li>
+                                {/* </ul> */}
+                                {/* </li> */}
                                 
                                 
-                            </ul>
-                            <p className="menu-label">
-                                Transações
-                            </p>
-                            <ul className="menu-list">
+                            {/* </ul> */}
+                            {/* <p className="menu-label"> */}
+                                {/* Transações */}
+                            {/* </p> */}
+                            {/* <ul className="menu-list"> */}
                                 {/* <li><a>Team Settings</a></li> */}
-                                <li>
-                                <Link to={"/dashboard/loan-request"} >Empréstimo</Link>
-                                <ul>
+                                {/* <li> */}
+                                {/* <Link to={"/dashboard/loan-request"} >Empréstimo</Link> */}
+                                {/* <ul> */}
                                     <li><Link to={"/dashboard/loan-request"}>Quero Empréstimo</Link></li>
                                     <li><Link to={"/dashboard/loans"}>Quero Investir</Link></li>
                                     {/* <li><a>Add a member</a></li> */}
-                                </ul>
-                                </li>
+                                {/* </ul> */}
+                                {/* </li> */}
                                 {/* <li><a>Invitations</a></li> */}
                                 
                             </ul>
