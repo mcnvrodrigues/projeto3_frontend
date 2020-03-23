@@ -85,7 +85,7 @@ class ConfirmationLoan extends Component{
 
                         <div className='level'>
                             <span className="tag is-info is-light">+ IOF</span>
-                            <p>R$ {this.context.state.loanRequest.iof}</p>
+                            <p>R$ {this.context.state.loanRequest.iof.toFixed(2)}</p>
                         </div>
                         
 

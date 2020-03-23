@@ -51,7 +51,7 @@ class Investment extends Component {
 
                             <div className='level'>
                                 <span className="tag is-info is-light">+ IOF</span>
-                                <p>R$ {this.state.loanreq.loans.iof}</p>
+                                <p>R$ {this.state.loanreq.loans.iof.toFixed(2)}</p>
                             </div>                        
 
                             <div className='level'>

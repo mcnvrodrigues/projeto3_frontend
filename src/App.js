@@ -36,7 +36,7 @@ class App extends Component {
     this.state = { 
       loggedInUser: null,
       confirmationCode: '',
-      messages: ''
+      messages: {msg: []}
     };
     this.service = new AuthService();
     this.generalService = new Service();
@@ -63,6 +63,8 @@ class App extends Component {
     this.setState({
       loggedInUser: userObj,
     })
+
+    console.log('massages passed to app >>', this.state.messages)
     // this.props.history.push('/dashboard')
   } 
 
@@ -72,23 +74,23 @@ class App extends Component {
     })
   }
 
-  componentDidUpdate(){
-    if(this.state.loggedInUser){
-      this.generalService.messagesreq(this.state.loggedInUser._id)
-      .then(message => {        
+  // componentDidUpdate(){
+  //   if(this.state.loggedInUser){
+  //     this.generalService.messagesreq(this.state.loggedInUser._id)
+  //     .then(message => {        
 
-        console.log('Message: ', message);
+  //       console.log('Message: ', message);
         
-        this.setState({
+  //       this.setState({
           
-          messages: message.msg
-        })
-      })
-    }else{
-      console.log('Usuario não logado')
-    }
+  //         messages: message.msg
+  //       })
+  //     })
+  //   }else{
+  //     console.log('Usuario não logado')
+  //   }
     
-  }
+  // }
 
   render() {
 

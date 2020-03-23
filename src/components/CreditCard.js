@@ -11,13 +11,16 @@ class CreditCard extends Component {
 
         this.state = { 
           installment: null,
-          number: '**** **** **** ****',
+          number: '',
           validade: '',
           expirationMonth: '12',
           expirationYear: '2020',
           bank: 'PAGAR-ME',
           owner: '',
           cvv: '',
+          bandeira: '/favicon.ico',
+          bgColor: '#8DB6CD',
+          color: 'white',        
           redirect: false
         };
 
@@ -74,6 +77,7 @@ class CreditCard extends Component {
             expirationMonth: this.state.validade.substr(0,2),
             expirationYear: this.state.validade.substr(3,6),
         });
+        this.bandeira();
 
         
       }
@@ -83,23 +87,40 @@ class CreditCard extends Component {
                 + '/' + this.state.expirationYear.toString().substr(-2,2);
     }
 
-    bandeira(){
-        switch(this.state.number.substr(0,1)){
-            case 4:
-                return 1;
-            case 51:
-                return 2;
-            case 52:
-                return 2;
-            case 53:
-                return 2;
-            case 54:
-                return 2;
-            case 55:
-                return 2;
-            default:
-                return 0;
-        }
+    bandeira = () => {
+
+            if (Number(this.state.number.substr(0,1)) == 4){
+                this.setState({
+                    bandeira: '/images/visa.png',
+                    bgColor: '#11aa99',
+                    color: 'white'                    
+                })
+            }else if(Number(this.state.number.substr(0,1)) == 5){
+                this.setState({
+                    bandeira: '/images/master-card.svg',
+                    bgColor: '#eeeeee',
+                    color: '#222222'
+                })
+            }else if(Number(this.state.number.substr(0,1)) == 3){
+                this.setState({
+                    bandeira: '/images/american.jpg',
+                    bgColor: '#ddbb55',
+                    color: 'white'
+                })
+            }else if(Number(this.state.number.substr(0,1)) == 6){
+                this.setState({
+                    bandeira: '/images/hiper.jpg',
+                    bgColor: '#EE82EE',
+                    color: 'white'
+                })
+            }else{
+                this.setState({
+                    bandeira: '/favicon.ico',
+                    bgColor: '#8DB6CD',
+                    color: 'white'
+                })
+            }
+        
         
     }
     
@@ -122,6 +143,7 @@ class CreditCard extends Component {
 
                                 
                                 <form onSubmit={this.handleFormSubmit}>
+
                                     <div className="columns">
                                     <div className="column is-four-fifths"><div><h4 className='subtitle is-4'>Cartão de Crédito</h4></div></div>
                                     <div className="column"></div>
@@ -133,21 +155,21 @@ class CreditCard extends Component {
                                     <div class="column is-full">
 
 
-                                            <div style={{backgroundColor:'blue'}} className="credit-card">
+                                            <div style={{backgroundColor:this.state.bgColor}} className="credit-card">
                                             <div className="logo-c">
                                                 <figure className="image is-48x48">
-                                                <img src = {(this.bandeira() === 1) ? '/images/visa.png' : '/images/master-card.svg'} alt=''/>
+                                                <img src = {this.state.bandeira} alt='bandeira'/>
                                                 </figure>    
                                             </div>           
                                             <div className="card-number">
-                                                <span style={{color:'white'}} className="title is-2">{'**** **** **** ' + this.state.number.toString().substr(-4, 4)}</span>
+                                                <span style={{color:this.state.color}} className="title is-2">{'**** **** **** ' + this.state.number.toString().substr(-4, 4)}</span>
                                             </div>   
                                             <div className="card-info">
-                                                <span style={{color:'white'}} className="title is-5">{this.cardInfo(this.props)}</span>
-                                                <span style={{color:'white'}} className="title is-5">{this.state.bank}</span>
+                                                <span style={{color:this.state.color}} className="title is-5">{this.cardInfo(this.props)}</span>
+                                                <span style={{color:this.state.color}} className="title is-5">{this.state.bank}</span>
                                             </div>
                                             <div className="owner">
-                                                <span style={{color:'white'}} className="title is-5">{this.state.owner}</span>            
+                                                <span style={{color:this.state.color}} className="title is-5">{this.state.owner}</span>            
                                             </div>  
                                         </div>
 
@@ -237,6 +259,7 @@ class CreditCard extends Component {
                                             {/* <Link to='/dashboard/confirmation-loan'><button className="button is-link">Salvar</button></Link> */}
                                             <button type='submit' className="button is-link is-fullwidth">Confirmar Pagamento</button>
                                         </div>
+                                        
                                      
                                         
                                 </form>
