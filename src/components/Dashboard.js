@@ -120,17 +120,19 @@ import CreditCard from './CreditCard';
                                     </Link>
                                 </li>
 
-                                {/* <li> */}
+                                
+
+                                <li>
                                 {/* <Link to={"/dashboard"}>Meus Empréstimos</Link> */}
-                                {/* <ul> */}
-                                    <li><Link to={"/dashboard/loansrequested"}>Solicitados</Link></li>
-                                    <li><Link to={"/dashboard/investments"} >Investimentos</Link></li>
+                                <p className="menu-label">
+                                Meus empréstimos
+                                </p>
+                                <ul>
+                                    <li><Link to={"/dashboard/loansrequested"}>Solicitados</Link></li>                                    
                                     <li><Link to={"/dashboard/approved"} >Aprovados</Link></li>
                                     {/* <li><a>Add a member</a></li> */}
-                                {/* </ul> */}
-                                {/* </li> */}
-                                
-                                
+                                </ul>
+                                </li>
                             {/* </ul> */}
                             {/* <p className="menu-label"> */}
                                 {/* Transações */}
@@ -141,6 +143,7 @@ import CreditCard from './CreditCard';
                                 {/* <Link to={"/dashboard/loan-request"} >Empréstimo</Link> */}
                                 {/* <ul> */}
                                     <li><Link to={"/dashboard/loan-request"}>Quero Empréstimo</Link></li>
+                                    <li><Link to={"/dashboard/investments"} >Meus investimentos</Link></li>
                                     <li><Link to={"/dashboard/loans"}>Quero Investir</Link></li>
                                     {/* <li><a>Add a member</a></li> */}
                                 {/* </ul> */}

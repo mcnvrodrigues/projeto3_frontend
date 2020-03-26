@@ -88,7 +88,7 @@ class Education extends Component {
                       <p>escolaridade?</p>
                   </h1>
 
-            <span className="tag is-danger">{this.state.selectedOption}</span>
+            {/* <span className="tag is-danger">{this.state.selectedOption}</span> */}
 
                 <hr></hr>
                    

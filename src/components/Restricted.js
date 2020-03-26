@@ -45,9 +45,7 @@ class Restricted extends Component {
 					{ y: 20, label: "Emprestimos" },
 					{ y: 24, label: "Investimentos" },
 					{ y: 20, label: "Pagamentos" },
-					{ y: 14, label: "Inadimplência" },
-					{ y: 12, label: "Parcelas" },
-					{ y: 10, label: "Misc" }	
+					{ y: 14, label: "Inadimplência" }
 				]
 			}]
 		}
