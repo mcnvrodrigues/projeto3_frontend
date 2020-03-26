@@ -40,7 +40,8 @@ class PaymentInstallment extends Component {
             <div className="container backg">
 
                 <p className='title is-4' style={{'color':'#060A4E'}}>Pagamentos</p>
-
+                    
+                    
                     {(this.state.install ?
 
                         this.state.install.install.map((parcela, i) => {
@@ -49,25 +50,25 @@ class PaymentInstallment extends Component {
                                     <form>
                                         
                                         <div className='level'>
-                                            <label className="title is-3">Parcela</label>
-                                            <p className="title is-3">{parcela.installmentNumber}/ {parcela.installments}</p>
+                                            <label className="title is-6">Parcela</label>
+                                            <p className="title is-6">{parcela.installmentNumber}/ {parcela.installments}</p>
                                         </div>                           
 
                                         <div className='level'>
-                                            <h6 className="title is-3">Valor</h6>
-                                            <p className="title is-3" style={{'color':'orange'}}>R$ {parcela.installmentAmount}</p>
+                                            <h6 className="title is-6">Valor</h6>
+                                            <p className="title is-6" style={{'color':'orange'}}>R$ {parcela.installmentAmount}</p>
                                         </div>
 
                                         <div className='level'>
-                                            <h6 className="title is-3">Vencimento</h6>
-                                            <p className="subtitle is-4">{this.formatDate(parcela.date)}</p>
+                                            <h6 className="title is-6">Vencimento</h6>
+                                            <p className="subtitle is-6">{this.formatDate(parcela.date)}</p>
                                         </div>
 
                                         
                                             {(parcela.status == 'Paid'? 
                                                 <div className='level'>
-                                                <h6 className="title is-3">Status</h6>
-                                                <p className="title is-3" style={{'color':'green'}}>Paga</p>
+                                                <h6 className="title is-6">Status</h6>
+                                                <p className="title is-6" style={{'color':'green'}}>Paga</p>
                                                 </div>
                                             :
                                             <div className="control">
