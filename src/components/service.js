@@ -99,6 +99,11 @@ class Service {
     .then(response => response.data);
   }
 
+  loginByConfirmationCode = (id) => {
+    return this.service.post('loginbyconfirmationcode', {id})
+    .then(response => response.data);
+  }
+
 }
 
 export default Service;

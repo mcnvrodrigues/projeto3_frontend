@@ -24,7 +24,7 @@ class ProfileForm extends Component {
     
         if (this.state.redirect) {
           
-          return <Redirect to='/' />
+          return <Redirect to='/dashboard' />
         }
       }
 
@@ -50,10 +50,20 @@ class ProfileForm extends Component {
 
             this.service.profile(id, this.state.estado, this.state.city, this.state.imageUrl)
             .then( response => {
+
+                this.service.loginByConfirmationCode(id)
+                .then( response => {
+                  console.log('usuario profileForm >> ', response);
+                  this.context.getUser(response.user);
+                  this.setState({
+                    redirect: true
+                  });
+                })
+                .catch(err => {
+                  console.log('erro ao logar a partir do profile form ', err);
+                })
                           
-                this.setState({
-                  redirect: true
-                });
+               
                 console.log(response);
                 
             })
@@ -148,7 +158,7 @@ class ProfileForm extends Component {
                               </div>          
 
                               {(this.state.loading?
-                              <progress class="progress is-danger" max="100">30%</progress>
+                              <progress className="progress is-danger" max="100">30%</progress>
                               :
                               <div></div>
                               )}
