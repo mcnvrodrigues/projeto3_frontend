@@ -88,7 +88,7 @@ class Nav extends Component{
                     <i className="fas fa-angle-down" aria-hidden="true"></i>
                   </span>
                   
-                  {(this.context.state.messages.length !== 0?
+                  {(this.context.state.messages.msg.length !== 0?
                     <span className="icon is-small">
                       <i className="fas fa-bell" aria-hidden="true"></i>
                     </span>
@@ -114,7 +114,7 @@ class Nav extends Component{
                   </a> */}
                   <hr className="dropdown-divider"/>
 
-                  {(this.context.state.messages.length !== 0?
+                  {(this.context.state.messages.msg.length !== 0?
                     
 
                     <Link to='/messages' className="dropdown-item" >

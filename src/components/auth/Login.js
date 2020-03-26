@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 import AppContext from '../../context/AppContext';
 import InputMask from 'react-input-mask';
+import Service from '../service';
 
 
 class Login extends Component {
@@ -16,6 +17,7 @@ class Login extends Component {
       redirect: false
     };
     this.service = new AuthService();
+    this.generalService = new Service();
   }
 
   renderRedirect = () => {   
@@ -40,14 +42,28 @@ class Login extends Component {
       this.service.login(cpf, password)
       .then( response => {
         
-        this.context.getUser(response)
+        this.generalService.messagesreq(response)
+        .then(message => {        
 
-        this.setState(
-          { 
-            cpf: "", 
-            password: "",
-            redirect: true
-           });
+          console.log('Message: ', message);
+          this.context.state.messages = message;
+
+          this.context.getUser(response)
+          // this.setState({
+            
+          //   messages: message.msg
+          // })
+          this.setState(
+            { 
+              cpf: "", 
+              password: "",
+              redirect: true
+             });
+        })
+
+        
+
+        
 
       })
       .catch( error => {

@@ -28,12 +28,14 @@ class Messages extends Component{
     event.preventDefault();
     
     if(this.context.state.messages){
-      this.context.state.messages.forEach(message => {
+      this.context.state.messages.msg.forEach(message => {
         this.service.messagesres(message._id)
         .then(() => {
             console.log('Mensagem lida');
         })
     });
+
+    this.context.state.messages = {msg: []};
       
     }
 
@@ -67,9 +69,9 @@ class Messages extends Component{
                         </header>
                         <section className="modal-card-body">
                         
-                        {(this.context.state.messages.length !== 0 ? 
+                        {(this.context.state.messages.msg.length !== 0 ? 
                             
-                            this.context.state.messages.map((message, i) => {
+                            this.context.state.messages.msg.map((message, i) => {
                                 return <article class="message is-info">
                                 <div className="message-header">
                                   <p>Info</p>

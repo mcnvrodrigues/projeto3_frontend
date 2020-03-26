@@ -5,7 +5,7 @@ class ConfirmationLoanMessageApproved extends Component {
     return (
         <div className='container'> 
             <div className='box confloanmessage has-background-primary'>
-                <h3 className='subtitle is-3'>Pedido Aprovado</h3>
+                <h3 className='subtitle is-3'>Investimento Aprovado</h3>
                 <p>Agora é só esperar</p>
                 <p>Continue acompanhando outras opções de investimentos</p>
                 <p>E escolha a que melhor se encaixa para você</p>

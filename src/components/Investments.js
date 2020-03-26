@@ -4,6 +4,7 @@ import AppContext from '../context/AppContext';
 import Cards from './loggedinArea/Cards';
 import { Link, Redirect } from 'react-router-dom';
 import AvailableLoan from './AvailableLoan';
+import DefaultMessage from './DefaultMessage';
 
 class Investments extends Component {
   constructor(props){
@@ -36,23 +37,29 @@ class Investments extends Component {
         {
           context => (
             <div className="container">
-           
+              <p className='title is-4' style={{'color':'#060A4E'}}>Investimentos</p>
 
             <div className="loan-container">                
                 
                 <div className="cards-container">
 
                 {(this.state.loansreq ? 
+
+                  (this.state.loansreq.loans.length !== 0 ?
+                    this.state.loansreq.loans.map((loan, i) => {
+                      return <Link to={`/dashboard/investment/${loan._id}`} key={i} >                       
+                          <Cards loanp={loan} user={context.state.loggedInUser} />
+                          
+                      </Link>
+                    })
+                  :
+                  <DefaultMessage title = 'Nada para mostrar' message = 'Você ainda não aprovou nenhum empréstimo'></DefaultMessage>
+                  )
                   
-                  this.state.loansreq.loans.map((loan, i) => {
-                    return <Link to={`/dashboard/investment/${loan._id}`} key={i} >                       
-                        <Cards loanp={loan} user={context.state.loggedInUser} />
-                        
-                    </Link>
-                  })
+                  
                   
                 :
-                  <p>Carregando</p>
+                  <progress className="progress is-small is-primary" max="100">15%</progress>
                 )}   
                 
                 

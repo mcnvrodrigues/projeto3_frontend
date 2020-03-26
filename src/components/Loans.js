@@ -3,7 +3,8 @@ import AvailableLoan from './AvailableLoan';
 import AppContext from '../context/AppContext';
 import Service from './service';
 import { Link, Redirect } from 'react-router-dom';
-import Cards from './loggedinArea/Cards'
+import Cards from './loggedinArea/Cards';
+import DefaultMessage from './DefaultMessage';
 
 class Loan extends Component {
 
@@ -55,16 +56,20 @@ class Loan extends Component {
                       </div> */}
 
                     {(this.state.availableloans ? 
-                  
-                    this.state.availableloans.loans.map((loan, i) => {
-                      return <Link to={`/dashboard/loans/${loan._id}`} key={i} >                       
-                          {/* <AvailableLoan loanp={loan} user={context.state.loggedInUser} /> */}
-                          <Cards loanp={loan} user={context.state.loggedInUser} />
-                      </Link>
-                    })
-                  
+
+                    (this.state.availableloans.loans.length !== 0 ?
+                      this.state.availableloans.loans.map((loan, i) => {
+                        return <Link to={`/dashboard/loans/${loan._id}`} key={i} >                       
+                            {/* <AvailableLoan loanp={loan} user={context.state.loggedInUser} /> */}
+                            <Cards loanp={loan} user={context.state.loggedInUser} />
+                        </Link>
+                      })
+                    :
+                    <DefaultMessage title = 'Nada para mostrar' message = 'Ainda não existem investimentos disponíveis.'></DefaultMessage>
+                    )        
+                      
                 :
-                  <p>Carregando</p>
+                  <progress className="progress is-small is-primary" max="100">15%</progress>
                 )}
               
                   </div>

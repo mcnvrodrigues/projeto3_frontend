@@ -58,7 +58,12 @@ class AvailableLoan extends Component {
 
                         <div className="media-content">
                         <p className='subtitle is-6'>Juros</p>
-                            <p className='title is-6' style={{'color':'green'}}>{this.props.loanp.rate} a.m.</p>
+                            <p className='title is-6' style={{'color':'green'}}>{(this.props.loanp.rate + this.props.loanp.cet).toFixed(2)} a.m.</p>
+                        </div>
+
+                        <div className="media-content">
+                        <p className='subtitle is-6'>IOF</p>
+                            <p className='title is-6' style={{'color':'green'}}>R$ {(this.props.loanp.iof).toFixed(2)}</p>
                         </div>
                       
                   </div> 

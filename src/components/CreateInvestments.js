@@ -7,8 +7,8 @@ class CreateInvestments extends Component{
     super(props);
     this.state = { 
       amount: 100,
-      installments: 1,      
-      dueDate: 1,  
+      installments: 6,      
+      dueDate: 5,  
       redirect: false    
     };
     
@@ -22,19 +22,35 @@ class CreateInvestments extends Component{
     }
   }
 
+
+  iof = () => {
+    let numDias = this.state.installments * 30;
+    let iofPercentage = 0.38 + (numDias * 0.0082);
+
+    let iofTotal = this.state.amount * (iofPercentage/100);
+
+    this.context.state.loanRequest.iof = iofTotal;
+
+    return iofTotal;
+    
+  }
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     
-    if(this.state.amount > 0 && this.state.amount !== 1 && this.state.dueDate !== 1){
+    // if(this.state.amount > 0 && this.state.amount !== 1 && this.state.dueDate !== 1){
 
-      
-      this.context.state.loanRequest.total = (this.state.amount + (this.state.amount * ((this.context.state.loanRequest.rate + this.context.state.loanRequest.cet)/100)) + this.context.state.loanRequest.iof).toFixed(2);
+      this.context.state.loanRequest.amount = this.state.amount;
+      this.context.state.loanRequest.installments = this.state.installments;
+      this.context.state.loanRequest.dueDate = this.state.dueDate;
+
+      this.context.state.loanRequest.total = (this.state.amount + (this.state.amount * (((this.context.state.loanRequest.rate * this.state.installments) + this.context.state.loanRequest.cet)/100)) + this.iof()).toFixed(2);
       this.context.state.loanRequest.intallmentAmount = (this.context.state.loanRequest.total / this.state.installments).toFixed(2);
 
       this.setState({
         redirect: true
       });
-    }    
+    // }    
   }
 
   handleChange = (event) => {  
